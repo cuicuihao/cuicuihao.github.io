@@ -227,6 +227,134 @@
 
 
   
+    <article id="post-java面向对象知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/11/java面向对象知识点/">java面向对象知识点</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/11/java面向对象知识点/" class="archive-article-date">
+  	<time datetime="2019-10-11T04:02:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="第二章-类和对象"><a href="#第二章-类和对象" class="headerlink" title="第二章 类和对象"></a>第二章 类和对象</h3><hr>
+<h6 id="1-面向对象概念："><a href="#1-面向对象概念：" class="headerlink" title="1.面向对象概念："></a>1.面向对象概念：</h6><h6 id="2-类的创建"><a href="#2-类的创建" class="headerlink" title="2.类的创建"></a>2.类的创建</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">语法：public class 类名&#123;&#125;</span><br><span class="line"> 	File---&gt;new---&gt;class---&gt;类名</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-创建对象"><a href="#3-创建对象" class="headerlink" title="3.创建对象"></a>3.创建对象</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名=new 类名();</span><br><span class="line"> 	对象名.方法名(); 对象名.属性</span><br></pre></td></tr></table></figure>
+
+<p>4.构造方法</p>
+<p>​      </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">方法名和类名相同,没有返回值</span><br><span class="line"> 	public class 类名&#123;</span><br><span class="line"> 		public 类名()&#123;&#125;//主要的做用是初始化操作</span><br><span class="line"> 	&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="5-构造方法重载"><a href="#5-构造方法重载" class="headerlink" title="5.构造方法重载"></a>5.构造方法重载</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在同一个类中，方法名相同，参数个数，顺序，类型不相同的构造方法</span><br><span class="line"> 	public class 类名&#123;</span><br><span class="line"> 		public 类名()&#123;&#125;</span><br><span class="line">		public 类名(String name,int age)&#123;&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-构造方法的执行"><a href="#6-构造方法的执行" class="headerlink" title="6.构造方法的执行"></a>6.构造方法的执行</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">new 类名();---&gt;执行构造方法</span><br><span class="line"> 	super();---&gt;执行了父类的构造方法</span><br></pre></td></tr></table></figure>
+
+<h6 id="7-static静态修饰符"><a href="#7-static静态修饰符" class="headerlink" title="7.static静态修饰符"></a>7.static静态修饰符</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">静态修饰符可以修饰属性，方法，代码块</span><br><span class="line"> 	类名.属性      类名.方法名</span><br></pre></td></tr></table></figure>
+
+<h6 id="8-java内存（栈和堆，static，方法区，gc（垃圾回收机制））"><a href="#8-java内存（栈和堆，static，方法区，gc（垃圾回收机制））" class="headerlink" title="8.java内存（栈和堆，static，方法区，gc（垃圾回收机制））"></a>8.java内存（栈和堆，static，方法区，gc（垃圾回收机制））</h6><h3 id="第三章-面向对象三大特征—封装"><a href="#第三章-面向对象三大特征—封装" class="headerlink" title="第三章 面向对象三大特征—封装"></a>第三章 面向对象三大特征—封装</h3><hr>
+<h6 id="1-封装的概念"><a href="#1-封装的概念" class="headerlink" title="1.封装的概念"></a>1.封装的概念</h6><h6 id="2-封装的步骤"><a href="#2-封装的步骤" class="headerlink" title="2.封装的步骤"></a>2.封装的步骤</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.把属性私有化（private）</span><br><span class="line"> 	2.对这些属性设置get和set方法</span><br><span class="line"> 	3.调用处理这些方法</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-封装的作用"><a href="#3-封装的作用" class="headerlink" title="3.封装的作用"></a>3.封装的作用</h6><p>​    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">避免一些用一些不合乎常理的操作</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-修饰符"><a href="#4-修饰符" class="headerlink" title="4.修饰符"></a>4.修饰符</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public---&gt;公共的：在一个项目中都可以访问，权限最高</span><br><span class="line">	private---&gt;私有的：只能在本类中进行访问，权限最低</span><br><span class="line">	protected---&gt;安全的，受保护的：同一个包能进行访问，继承中之类可以访问父类</span><br><span class="line">	default---&gt;默认的：同一个包能访问</span><br></pre></td></tr></table></figure>
+
+<h3 id="第四章-面向对象三大特征—继承"><a href="#第四章-面向对象三大特征—继承" class="headerlink" title="第四章 面向对象三大特征—继承"></a>第四章 面向对象三大特征—继承</h3><hr>
+<h6 id="1-继承的概念"><a href="#1-继承的概念" class="headerlink" title="1.继承的概念"></a>1.继承的概念</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">父亲儿子，电影《西虹市首富》</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-继承的关键字"><a href="#2-继承的关键字" class="headerlink" title="2.继承的关键字"></a>2.继承的关键字</h6><p>​     </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">extends</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-继承的语法："><a href="#3-继承的语法：" class="headerlink" title="3.继承的语法："></a>3.继承的语法：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class 类名  extends 父类&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-使用，在之类中："><a href="#4-使用，在之类中：" class="headerlink" title="4.使用，在之类中："></a>4.使用，在之类中：</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">可以直接调用父类的非私有属性和方法</span><br><span class="line"> 	可以用super.方法     super.属性</span><br></pre></td></tr></table></figure>
+
+<h6 id="5-父类构造方法调用：super"><a href="#5-父类构造方法调用：super" class="headerlink" title="5.父类构造方法调用：super();"></a>5.父类构造方法调用：super();</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">调用父类的构造方法必须在之类中调用</span><br><span class="line">必须实在之类构造方法的第一行代码</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-重写"><a href="#6-重写" class="headerlink" title="6.重写"></a>6.重写</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">必须继承</span><br><span class="line"> 	方法名一致，参数个数，顺序，类型全部一致</span><br></pre></td></tr></table></figure>
+
+<h3 id="第五章-面向对象—多态"><a href="#第五章-面向对象—多态" class="headerlink" title="第五章 面向对象—多态"></a>第五章 面向对象—多态</h3><hr>
+<h6 id="1-多态的概念"><a href="#1-多态的概念" class="headerlink" title="1.多态的概念"></a>1.多态的概念</h6><h6 id="2-多态的必要条件"><a href="#2-多态的必要条件" class="headerlink" title="2.多态的必要条件"></a>2.多态的必要条件</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">继承</span><br><span class="line"> 	重写</span><br><span class="line"> 	父类引用指向子类对象（向上转型）</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-多态的使用"><a href="#3-多态的使用" class="headerlink" title="3.多态的使用"></a>3.多态的使用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Father&#123;</span><br><span class="line"> 		public void cooking()&#123;</span><br><span class="line"> 			System.out.println(&quot;米饭&quot;);</span><br><span class="line"> 		&#125;</span><br><span class="line"> 	&#125;</span><br><span class="line">  	public class Son extends Father&#123;</span><br><span class="line"> 			@Override</span><br><span class="line"> 			public void cooking()&#123;</span><br><span class="line"> 				System.out.println(&quot;熬粥&quot;);</span><br><span class="line"> 			&#125;</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		public class Test &#123;</span><br><span class="line">			public static void main(String[] args) &#123;</span><br><span class="line">				Father son=new Son();</span><br><span class="line">				son.cooking();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-向下转型"><a href="#4-向下转型" class="headerlink" title="4.向下转型"></a>4.向下转型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Son son=(Son)father;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第六章-抽象"><a href="#第六章-抽象" class="headerlink" title="第六章 抽象"></a>第六章 抽象</h3><hr>
+<h6 id="1-抽象的概念"><a href="#1-抽象的概念" class="headerlink" title="1.抽象的概念"></a>1.抽象的概念</h6><h6 id="2-抽象的关键字"><a href="#2-抽象的关键字" class="headerlink" title="2.抽象的关键字"></a>2.抽象的关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abstract</span><br><span class="line"> 	可以修饰类，可以修饰方法</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-抽象的用法"><a href="#3-抽象的用法" class="headerlink" title="3.抽象的用法"></a>3.抽象的用法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//抽象类</span><br><span class="line"> 	public abstract class 类名&#123;</span><br><span class="line"> 		//抽象方法没有方法体</span><br><span class="line"> 		public abstract void 方法名();	</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	//当父类是抽象类的时候，子类必须重写父类里面的抽象方法</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-final修饰符：最终的"><a href="#4-final修饰符：最终的" class="headerlink" title="4.final修饰符：最终的"></a>4.final修饰符：最终的</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">修饰变量，修饰方法，修饰类</span><br><span class="line"> 	1.当修饰变量时，变量转换成常量，常量的值不能改变</span><br><span class="line"> 		final int a=18;//a=18;不能改变,必须给一个初始值</span><br><span class="line"> 	2.当修饰方法时，该方法不能被重写</span><br><span class="line"> 	3.当修饰类时，该类不能被继承</span><br></pre></td></tr></table></figure>
+
+<h3 id="第七章-接口"><a href="#第七章-接口" class="headerlink" title="第七章 接口"></a>第七章 接口</h3><hr>
+<h6 id="1-接口的概念"><a href="#1-接口的概念" class="headerlink" title="1.接口的概念"></a>1.接口的概念</h6><h6 id="2-接口的关键字"><a href="#2-接口的关键字" class="headerlink" title="2.接口的关键字"></a>2.接口的关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">interface</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-接口的语法"><a href="#3-接口的语法" class="headerlink" title="3.接口的语法"></a>3.接口的语法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public interface 接口名&#123;&#125;</span><br><span class="line"> 	File---&gt;new---&gt;interface//创建接口</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-接口的用法"><a href="#4-接口的用法" class="headerlink" title="4.接口的用法"></a>4.接口的用法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">  实现接口的关键字  implements</span><br><span class="line">	public interface 接口名&#123;</span><br><span class="line">		//接口是纯抽象类</span><br><span class="line">		//接口里面的方法都是抽象方法</span><br><span class="line">		void setData();</span><br><span class="line">	&#125;</span><br><span class="line">	public class Play implements 接口名&#123;</span><br><span class="line">		@Override</span><br><span class="line">		void setData()&#123;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">	public class Test &#123;</span><br><span class="line">		public static void main(String[] args) &#123;</span><br><span class="line">			Play play=new Play();</span><br><span class="line">			play.setData();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	注意接口可以进行多继承</span><br><span class="line">	public interface 接口名 extends 接口名，接口名&#123;&#125;</span><br><span class="line">	一般用法</span><br><span class="line">	public class 类名 extends 父类 implements 接口，接口&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="第八章-集合框架"><a href="#第八章-集合框架" class="headerlink" title="第八章 集合框架"></a>第八章 集合框架</h3><hr>
+<h6 id="1-ArrayList"><a href="#1-ArrayList" class="headerlink" title="1.ArrayList"></a>1.ArrayList</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用法</span><br><span class="line"> 	ArrayList list=new ArrayList();</span><br><span class="line"> 	list.add();//添加数据</span><br><span class="line"> 	list.get();//获取数据</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-Map"><a href="#2-Map" class="headerlink" title="2.Map"></a>2.Map</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">用法</span><br><span class="line"> 	Map map=new HasMap();</span><br><span class="line"> 	map.put(key,value);//key不能重复</span><br><span class="line"> 	map.get(key);//获取key对象的valu</span><br></pre></td></tr></table></figure>
+
+<p>e</p>
+<h6 id="3-泛型"><a href="#3-泛型" class="headerlink" title="3.泛型"></a>3.泛型</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list=new ArrayList&gt;&lt;String&gt;();</span><br><span class="line"> 	Map&lt;String,String&gt; map=new HasMap&lt;String,String&gt;();</span><br><span class="line"> 	ArrayList&lt;Map&lt;String,String&gt;&gt; list=new ArrayList&gt;&lt;Map&lt;String,String&gt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/11/java面向对象知识点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
