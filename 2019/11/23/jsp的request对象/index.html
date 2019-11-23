@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Hexo</title>
+  <title>jsp的request对象 ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,6 +107,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期六, 十一月 23日 2019, 5:17 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    471 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -117,47 +152,103 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 4 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/11/23/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5SQL%E8%AF%AD%E5%8F%A5/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MySQL数据库增删改查SQL语句</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-    
-    <a href="/2019/11/23/jsp%E7%9A%84request%E5%AF%B9%E8%B1%A1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">jsp的request对象</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-    
-    <a href="/2019/11/23/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在博客中添加音乐</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h3 id="jsp的request对象主要方法"><a href="#jsp的request对象主要方法" class="headerlink" title="jsp的request对象主要方法"></a>jsp的request对象主要方法</h3><h6 id="request对象的方法非常多，只写其中常用的几种方法。"><a href="#request对象的方法非常多，只写其中常用的几种方法。" class="headerlink" title="request对象的方法非常多，只写其中常用的几种方法。"></a>request对象的方法非常多，只写其中常用的几种方法。</h6><ul>
+<li><p><strong>getAttribute(String name);</strong>这个方法可以取出<strong>name</strong>属性的值，<strong>name</strong>属性的值可以用<strong>setAttribute(String name,Object o);</strong>方法赋值，如果没有对其赋值，则默认<strong>name</strong>为<strong>null</strong>;    </p>
+</li>
+<li><p><strong>getContexntPath();</strong>这个方法可以获取服务器上下文的路径；</p>
+</li>
+<li><p><strong>getCookies();</strong>这个方法可以获取客户端的Cookies（一个保存在客户机中的简单的文本文件）；</p>
+</li>
+<li><p><strong>getHeader(String name)</strong>这个方法可以获取指定名称的HTTP报头的属性值；</p>
+</li>
+<li><p><strong>getParameter(String name)</strong>这个方法可以获取客户端提交到服务器的参数；</p>
+</li>
+<li><p><strong>getServerName()</strong>这个方法可以获得服务器的名称</p>
+</li>
+<li><p><strong>getServerPort()</strong>这个方法可以获得服务器的访问端口</p>
+</li>
+<li><p><strong>setAttribute(String name,Object o);</strong>对name属性赋值</p>
+</li>
+<li><p><strong>removeAttribute(String name)</strong>这个方法移除指定名称的属性</p>
+</li>
+<li><p><strong>getRemoteAddr()</strong>这个方法返回客户端的IP地址</p>
+<h2 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h2></li>
+</ul>
+<pre><code class="jsp">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;gb2312&quot;%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;UTF-8&quot;&gt;
+&lt;title&gt;request实例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;%
+    request.setAttribute(&quot;attr&quot;, &quot;hello!&quot;);
+    out.print(&quot;attr的值&quot;+request.getAttribute(&quot;attr&quot;)+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;上下文路径&quot;+request.getContextPath()+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;Cookies:&quot;+request.getCookies()+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;Host:&quot;+request.getHeader(&quot;Host&quot;)+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;服务器名称：&quot;+request.getServerName()+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;服务器端口：&quot;+request.getServerPort()+&quot;&lt;br&gt;&quot;);
+    out.print(&quot;客户端的IP地址：&quot;+request.getRemoteAddr()+&quot;&lt;br&gt;&quot;);
+    request.removeAttribute(&quot;attr&quot;);
+    out.print(&quot;属性移除后的attr的值：&quot;+request.getAttribute(&quot;attr&quot;)+&quot;&lt;br&gt;&quot;);
 
-              </div>
-            </div>
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<h3 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h3><img src="http://a1.qpic.cn/psb?/V13S9xI31Px2LW/p5RYDG8GnkBkSSMOzIUH7uJq0KspJo3TBS*Hf.Iwp9M!/c/dFQBAAAAAAAA&ek=1&kp=1&pt=0&bo=nwEkAZ8BJAEDGTw!&tl=1&vuin=1458566939&tm=1571918400&sce=60-2-2&rf=0-0" srcset="undefined" style="zoom:150%;" />
+
+<ul>
+<li>补充一个<strong>request.setCharacterEncoding(“utf-8”);</strong>用来改变传递参数的编码</li>
+</ul>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -232,6 +323,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -272,7 +368,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "jsp的request对象&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
