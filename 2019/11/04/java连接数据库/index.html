@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>java连接数据库 ~ Hexo</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>cuicuihao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期一, 十一月 4日 2019, 4:08 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    485 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      2 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h3 id="首先需要加入sql外驱动包"><a href="#首先需要加入sql外驱动包" class="headerlink" title="首先需要加入sql外驱动包"></a>首先需要加入sql外驱动包</h3><p>百度云链接：<a href="https://pan.baidu.com/s/1zWb2uRXlIIwL_LiQ5pANYQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1zWb2uRXlIIwL_LiQ5pANYQ</a>  提取码：zywf</p>
+<h3 id="然后将此包放入自己的项目目录下"><a href="#然后将此包放入自己的项目目录下" class="headerlink" title="然后将此包放入自己的项目目录下"></a>然后将此包放入自己的项目目录下</h3><p>然后将此包部署一下：</p>
+<p><img src="https://ae01.alicdn.com/kf/H93aff8ac98e4448c9ef184ac934c2a6dD.jpg" srcset="undefined" alt=""></p>
+<p><img src="https://ae01.alicdn.com/kf/Hf201d8dce26d4cc88df57abd45b32ad3h.jpg" srcset="undefined" alt=""></p>
+<p>部署完成后会在项目目录下显示</p>
+<p><img src="https://ae01.alicdn.com/kf/H1392a7af91de45df9a5f4c4f09ffa4a5s.jpg" srcset="undefined" alt=""></p>
+<h3 id="然后在项目下面新建java包"><a href="#然后在项目下面新建java包" class="headerlink" title="然后在项目下面新建java包"></a>然后在项目下面新建java包</h3><p>导入数据库驱动，和mysql的端口：</p>
+<pre><code class="java">    String driverName = &quot;com.mysql.jdbc.Driver&quot;;
+    //com.mysql.jdbc.Driver就是数据库驱动，
+    String dbUrl = &quot;jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC&quot;;
+    //localhost:3306是默认的数据库端口，test就是我们的数据库名字了</code></pre>
+<p>这是我们设置mysql的账号密码；    </p>
+<pre><code class="java"> String userName = &quot;root&quot;;
+ String userPwd = &quot;root&quot;;
+
+Connection conn = null;
+try {
+    //下面两行就是与我们的数据库取得连接的代码
+            Class.forName(driverName);
+            conn = DriverManager.getConnection(dbUrl, userName, userPwd);
+        } </code></pre>
+<p>连接起来就是</p>
+<pre><code class="java">
+import java.sql.*;
+public class Menu {
+    public static void main(String[] args) { 
+        String driverName = &quot;com.mysql.jdbc.Driver&quot;;
+         String dbUrl = &quot;jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC&quot;;
+         String userName = &quot;root&quot;;
+         String userPwd = &quot;root&quot;;
+        try {
+            Class.forName(driverName);
+            Connection conn = DriverManager.getConnection(dbUrl, userName, userPwd);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+}</code></pre>
+<p>运行一下</p>
+<p><img src="https://ae01.alicdn.com/kf/H1cb4de8335cd4201984f9e18ceb3617fI.jpg" srcset="undefined" alt=""></p>
+<h3 id="显示“运行成功”就说明数据库连接成功了；"><a href="#显示“运行成功”就说明数据库连接成功了；" class="headerlink" title="显示“运行成功”就说明数据库连接成功了；"></a>显示“运行成功”就说明数据库连接成功了；</h3><h2 id="测试一下插入一条数据"><a href="#测试一下插入一条数据" class="headerlink" title="测试一下插入一条数据"></a>测试一下插入一条数据</h2><pre><code class="java">import java.sql.*;
+
+
+public class Menu {
+    public static void main(String[] args)throws SQLException {
+        Connection conn = null;
+        Statement stat = null;
+         String driverName = &quot;com.mysql.jdbc.Driver&quot;;
+         //加载数据库驱动类
+         String dbUrl = &quot;jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC&quot;;
+//         数据库连接
+         String userName = &quot;root&quot;;
+//         账号
+         String userPwd = &quot;root&quot;;
+//         密码
+        try {
+            Class.forName(driverName);
+            conn = DriverManager.getConnection(dbUrl, userName, userPwd);
+            String sql = &quot;insert into login(username,password)values(&#39;张三&#39;,&#39;123456&#39;)&quot;;
+            stat=conn.createStatement();
+
+//            数据库的语句
+            if(stat.executeUpdate(sql)==1) {
+//                这行语句可以执行sql语句并返回改变数据的条数，判断影响行数
+                System.out.println(&quot;成功&quot;);
+            }else {
+                System.out.println(&quot;失败&quot;);
+            }
+        }  catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (stat != null)
+            stat.close();
+        if (conn != null)
+            conn.close();
+    }
+
+}
+</code></pre>
+<h3 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h3><p><img src="https://ae01.alicdn.com/kf/H3ae0b705dd0f4431af244b4239cd08dfB.jpg" srcset="undefined" alt=""></p>
+<h3 id="数据库数据增加一条："><a href="#数据库数据增加一条：" class="headerlink" title="数据库数据增加一条："></a>数据库数据增加一条：</h3><p><img src="https://ae01.alicdn.com/kf/H26690235d4f54ceba251643fd620c9adb.jpg" srcset="undefined" alt=""></p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "java连接数据库&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
