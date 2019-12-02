@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>归档 ~ Hexo</title>
+  <title>java根据正则过滤特殊字符 ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -36,7 +36,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -107,6 +107,41 @@
             </span>
 
             
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 十一月 26日 2019, 10:07 上午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    197 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      1 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
           </div>
 
           
@@ -117,71 +152,77 @@
 
   <main>
     
-      <div class="container nopadding-md">
-        <div class="py-5 z-depth-3" id="board">
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 13 篇文章</p>
-  <hr>
-  
-    
       
-      <p class="h5">2019</p>
-    
-    <a href="/2019/12/02/%E4%BD%BF%E7%94%A8Css%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">使用Css获取用户密码</span>
-      <span style="float: right;">12-02</span>
-    </a>
-  
-    
-    <a href="/2019/12/02/EL%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">EL表达式</span>
-      <span style="float: right;">12-02</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/%E5%85%B3%E4%BA%8EjQuery%E4%B8%AD%E2%80%9Canimate-%E2%80%9D%E5%87%BD%E6%95%B0%E5%AF%B9%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E7%9A%84%E6%94%AF%E6%8C%81/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">关于jQuery中“animate()”函数对颜色变化的支持</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/hexo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E7%94%A8%E6%B3%95/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">hexo博客常用插件及用法</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/%E9%9D%A2%E8%AF%95%E8%A6%81%E7%82%B9%E6%95%B4%E7%90%86/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">面试要点整理</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/java%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">java连接数据库</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-    
-    <a href="/2019/12/01/%E6%96%B0%E6%89%8B%E7%8E%A9%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">新手玩云服务器</span>
-      <span style="float: right;">12-01</span>
-    </a>
-  
-</div>
 
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <pre><code class="java">public class FilterSpecialStr {
 
-              </div>
-            </div>
+    public static void main(String[] args) {
+
+        String regEx=&quot;[\n`~!@#$%^&amp;*()+=|{}&#39;:;&#39;,\\[\\].&lt;&gt;/?~！@#￥%……&amp;*（）——+|{}【】‘；：”“’。， 、？]&quot;;   
+        // 除了字母数字下划线之外的字符为非法字符
+        Pattern pattern = Pattern.compile(regEx);
+        // 指定设置非法字符
+        // Pattern pattern = Pattern.compile(&quot;[@#]&quot;);
+        String str = &quot;123@abc {}  \n  #D     EF。&quot;;
+        Matcher matcher = pattern.matcher(str);
+        StringBuffer buffer = new StringBuffer();
+        //如果找到非法字符
+        while (matcher.find()) {
+        // 如果里面包含非法字符如冒号双引号等，那么就把他们消去，并把非法字符前面的字符放到缓冲区
+            matcher.appendReplacement(buffer, &quot;&quot;);
+        }
+        // 将剩余的合法部分添加到缓冲区
+        matcher.appendTail(buffer);
+        System.out.println(&quot;过滤前的字符: &quot; + str);
+        System.out.println(&quot;过滤后的字符: &quot; + buffer.toString());
+    }
+}</code></pre>
+<p>输出的结果：</p>
+<p> 过滤前的字符: 123@abc {}<br>  #D   EF。<br> 过滤后的字符: 123abcDEF</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
           </div>
         </div>
       </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
     
   </main>
 
@@ -256,6 +297,11 @@
 
 
 
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
 
 
   <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
@@ -296,7 +342,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "归档&nbsp;",
+        "java根据正则过滤特殊字符&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
