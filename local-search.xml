@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>JSP Cookie 处理</title>
+    <link href="undefined2019/12/03/Vue.js%20%E5%AE%89%E8%A3%85/"/>
+    <url>2019/12/03/Vue.js%20%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Vue-js-安装"><a href="#Vue-js-安装" class="headerlink" title="Vue.js 安装"></a>Vue.js 安装</h1><h2 id="1、独立版本"><a href="#1、独立版本" class="headerlink" title="1、独立版本"></a>1、独立版本</h2><p>我们可以在 Vue.js 的官网上直接下载 vue.min.js 并用 **** 标签引入。</p><p><a href="https://vuejs.org/js/vue.min.js" target="_blank" rel="noopener">下载 Vue.js</a> </p><hr><h2 id="2、使用-CDN-方法"><a href="#2、使用-CDN-方法" class="headerlink" title="2、使用 CDN 方法"></a>2、使用 CDN 方法</h2><p>以下推荐国外比较稳定的两个 CDN，国内还没发现哪一家比较好，目前还是建议下载到本地。</p><ul><li><strong>Staticfile CDN（国内）</strong> : <a href="https://cdn.staticfile.org/vue/2.2.2/vue.min.js" target="_blank" rel="noopener">https://cdn.staticfile.org/vue/2.2.2/vue.min.js</a></li><li><strong>unpkg</strong>：<a href="https://unpkg.com/vue/dist/vue.js" target="_blank" rel="noopener">https://unpkg.com/vue/dist/vue.js</a>, 会保持和 npm 发布的最新的版本一致。</li><li><strong>cdnjs</strong> : <a href="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js" target="_blank" rel="noopener">https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.8/vue.min.js</a></li></ul><h2 id="Staticfile-CDN（国内）"><a href="#Staticfile-CDN（国内）" class="headerlink" title="Staticfile CDN（国内）"></a>Staticfile CDN（国内）</h2><div id="app">   <p></p> </div><h2 id="unpkg（推荐）"><a href="#unpkg（推荐）" class="headerlink" title="unpkg（推荐）"></a>unpkg（推荐）</h2><div id="app">   <p></p> </div><h2 id="cdnjs"><a href="#cdnjs" class="headerlink" title="cdnjs"></a>cdnjs</h2><div id="app">   <p></p> </div><hr><h2 id="3、NPM-方法"><a href="#3、NPM-方法" class="headerlink" title="3、NPM 方法"></a>3、NPM 方法</h2><p>由于 npm 安装速度慢，本教程使用了淘宝的镜像及其命令 cnpm，安装使用介绍参照：<a href="">使用淘宝 NPM 镜像</a>。</p><p>npm 版本需要大于 3.0，如果低于此版本需要升级它：</p><pre><code># 查看版本$ npm -v2.3.0#升级 npmcnpm install npm -g# 升级或安装 cnpmnpm install cnpm -g</code></pre><p>在用 Vue.js 构建大型应用时推荐使用 NPM 安装：</p><pre><code># 最新稳定版$ cnpm install vue</code></pre><hr><h2 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h2><p>Vue.js 提供一个官方命令行工具，可用于快速搭建大型单页应用。</p><pre><code># 全局安装 vue-cli$ cnpm install --global vue-cli# 创建一个基于 webpack 模板的新项目$ vue init webpack my-project# 这里需要进行一些配置，默认回车即可This will install Vue 2.x version of the template.For Vue 1.x use: vue init webpack#1.0 my-project? Project name my-project? Project description A Vue.js project? Author runoob &lt;test@runoob.com&gt;? Vue build standalone? Use ESLint to lint your code? Yes? Pick an ESLint preset Standard? Setup unit tests with Karma + Mocha? Yes? Setup e2e tests with Nightwatch? Yes   vue-cli · Generated &quot;my-project&quot;.   To get started:     cd my-project     npm install     npm run dev   Documentation can be found at https://vuejs-templates.github.io/webpack</code></pre><p>进入项目，安装并运行： </p><pre><code>$ cd my-project$ cnpm install$ cnpm run dev DONE  Compiled successfully in 4388ms&gt; Listening at http://localhost:8080</code></pre><p>成功执行以上命令后访问 <a href="http://localhost:8080/，输出结果如下所示：" target="_blank" rel="noopener">http://localhost:8080/，输出结果如下所示：</a></p><p><img src="https:////www.runoob.com/wp-content/uploads/2017/01/56219E04-D156-43EC-AC59-BFE7E38A62C3.jpg" srcset="undefined" alt="img"></p><blockquote><p><strong>注意：</strong>Vue.js 不支持 IE8 及其以下 IE 版本。</p></blockquote>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用Css获取用户密码</title>
     <link href="undefined2019/12/02/%E4%BD%BF%E7%94%A8Css%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/"/>
     <url>2019/12/02/%E4%BD%BF%E7%94%A8Css%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/</url>
