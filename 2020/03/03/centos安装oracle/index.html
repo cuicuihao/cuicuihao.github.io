@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>centos安装oracle ~ Hexo</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>cuicuihao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期二, 三月 3日 2020, 6:44 晚上
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    2.4k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      11 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <h2 id="linux安装Oracle11G"><a href="#linux安装Oracle11G" class="headerlink" title="linux安装Oracle11G"></a>linux安装Oracle11G</h2><h3 id="0、下载Orcle11G"><a href="#0、下载Orcle11G" class="headerlink" title="0、下载Orcle11G"></a>0、下载Orcle11G</h3><p><a href="http://www.cnblogs.com/mmzs/p/9030823.html" target="_blank" rel="noopener">oracle10G/11G官方下载地址合集（直接迅雷下载）</a></p>
+<pre><code>说明一下：
+[root@myYUn install]#中的myYUn
+等价于
+[root@iz2f570bi1k56uz install]#中的iz2f570bi1k56uz；
+这是为了界面效果调整的，但是有些没调整到，理解一哈。</code></pre><h3 id="1、上传文件到服务器或虚拟机的-install目录下"><a href="#1、上传文件到服务器或虚拟机的-install目录下" class="headerlink" title="1、上传文件到服务器或虚拟机的/install目录下"></a>1、上传文件到服务器或虚拟机的/install目录下</h3><p>[root@myYUn install]# rz –y</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125226505-857831317.png" srcset="undefined" alt="img"></p>
+<p>如果rz –y命令不能使用，可用<a href="http://www.cnblogs.com/mmzs/p/8183935.html#_label0" target="_blank" rel="noopener">如下方法解决</a>：</p>
+<pre><code>yum install lrzsz -y</code></pre><h3 id="2、解压文件到当前目录："><a href="#2、解压文件到当前目录：" class="headerlink" title="2、解压文件到当前目录："></a>2、解压文件到当前目录：</h3><p>[root@myYUn install]# unzip linux.x64_11gR2_database_1of2.zip</p>
+<p>[root@myYUn install]# unzip linux.x64_11gR2_database_2of2.zip</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125353568-1719568445.png" srcset="undefined" alt="img"></p>
+<p>如果unzip命令不能使用，依次执行如下命令：</p>
+<pre><code>     yum list | grep zip/unzip
+
+     yum install zip
+
+     yum install unzip </code></pre><p>将解压后的文件夹直接移动到/software目录下：</p>
+<p>[root@myYUn install]# mv database/ /software/</p>
+<p>[root@myYUn install]# cd /software</p>
+<p>[root@myYUn install]# ll</p>
+<p> <img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125419989-1037448251.png" srcset="undefined" alt="img"></p>
+<h3 id="3、关闭selinux"><a href="#3、关闭selinux" class="headerlink" title="3、关闭selinux"></a>3、关闭selinux</h3><p>[root@myYUn software]# vim /etc/selinux/config</p>
+<p>设置SELINUX=disabled</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125503992-512683440.png" srcset="undefined" alt="img"></p>
+<p>[root@myYUn software]# setenforce 0</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125514365-1802770294.png" srcset="undefined" alt="img"></p>
+<h3 id="4、关闭防火墙"><a href="#4、关闭防火墙" class="headerlink" title="4、关闭防火墙"></a>4、关闭防火墙</h3><p>[查看系统版本]</p>
+<p>[root@myYUn software]# cat /etc/redhat-release</p>
+<p>CentOS Linux release 7.3.1611 (Core)</p>
+<p>[root@myYUn software]# getconf LONG_BIT</p>
+<p>64</p>
+<p><strong>如果是6及以下：</strong></p>
+<p>[root@myYUn software]# service iptables stop</p>
+<p>[root@myYUn software]# service iptables status</p>
+<p>[root@myYUn software]# chkconfig iptables off</p>
+<p><strong>如果是centenOS7：</strong></p>
+<p>[root@myYUn software]# systemctl stop firewalld.service</p>
+<p>[root@myYUn software]# systemctl list-unit-files|grep firewalld.service</p>
+<p>firewalld.service               disabled</p>
+<p>[root@myYUn software]# systemctl disable firewalld.service</p>
+<h3 id="5、安装Oracle-11g依赖包"><a href="#5、安装Oracle-11g依赖包" class="headerlink" title="5、安装Oracle 11g依赖包"></a>5、安装Oracle 11g依赖包</h3><p>[root@myYUn software]# yum install gcc make binutils gcc-c++ compat-libstdc++-33elfutils-libelf-devel elfutils-libelf-devel-static ksh libaio libaio-develnumactl-devel sysstat unixODBC unixODBC-devel pcre-devel –y</p>
+<h3 id="6、添加安装用户和用户组"><a href="#6、添加安装用户和用户组" class="headerlink" title="6、添加安装用户和用户组"></a>6、添加安装用户和用户组</h3><p>[root@myYUn software]# groupadd oinstall</p>
+<p>[root@myYUn software]# groupadd dba</p>
+<p>[root@myYUn software]# useradd -g oinstall -G dba oracle</p>
+<p>[root@myYUn software]# passwd oracle</p>
+<p>Changing password for user oracle.</p>
+<p>New password:</p>
+<p>BAD PASSWORD: The password is shorter than 8 characters</p>
+<p>Retype new password:</p>
+<p>passwd: all authentication tokens updated successfully.</p>
+<p>[root@myYUn software]# id oracle</p>
+<p>uid=1001(oracle) gid=1001(oinstall) groups=1001(oinstall),1002(dba)</p>
+<h3 id="7、修改内核参数配置文件"><a href="#7、修改内核参数配置文件" class="headerlink" title="7、修改内核参数配置文件"></a>7、修改内核参数配置文件</h3><p>[root@myYUn software]# vim /etc/sysctl.conf</p>
+<p>在末尾添加以下内容：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<pre><code>fs.aio-max-nr = 1048576
+fs.file-max = 6815744
+kernel.shmall = 2097152
+kernel.shmmax = 1073741824
+kernel.shmmni = 4096
+kernel.sem = 250 32000 100 128
+net.ipv4.ip_local_port_range = 9000 65500
+net.core.rmem_default = 262144
+net.core.rmem_max = 4194304
+net.core.wmem_default = 262144
+net.core.wmem_max = 1048576 </code></pre><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<p>查看是否成功写进/etc/sysctl.conf文件中：</p>
+<p>[root@myYUn software]# sysctl -p</p>
+<p>其中kernel.shmmax = 1073741824为本机物理内存（2G）的一半，单位为byte。</p>
+<h3 id="8、修改用户的限制文件"><a href="#8、修改用户的限制文件" class="headerlink" title="8、修改用户的限制文件"></a>8、修改用户的限制文件</h3><p>修改/etc/security/limits.conf文件：</p>
+<p>[root@myYUn software]# vim /etc/security/limits.conf</p>
+<p>在末尾添加以下内容：</p>
+<pre><code>oracle           soft    nproc           2047
+oracle           hard    nproc           16384
+oracle           soft    nofile          1024
+oracle           hard    nofile         65536
+oracle           soft    stack           10240 </code></pre><p>修改/etc/pam.d/login文件：</p>
+<p>[root@myYUn software]# vim /etc/pam.d/login</p>
+<p>在末尾添加以下内容：</p>
+<pre><code>session required  /lib64/security/pam_limits.so
+session required   pam_limits.so </code></pre><p>修改/etc/profile文件：</p>
+<p>[root@ myYUn software]# vim /etc/profile</p>
+<p>在末尾添加以下内容：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<pre><code>#oracle配置
+if [ $USER = &quot;oracle&quot; ]; then
+  if [ $SHELL = &quot;/bin/ksh&quot; ]; then
+      ulimit -p 16384
+      ulimit -n 65536
+  else
+      ulimit -u 16384 -n 65536
+  fi
+fi </code></pre><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<h3 id="9、创建安装目录和设置文件权限"><a href="#9、创建安装目录和设置文件权限" class="headerlink" title="9、创建安装目录和设置文件权限"></a>9、创建安装目录和设置文件权限</h3><p>[root@myYUn software]# mkdir -p /data/oracle/product/11.2.0</p>
+<p>[root@myYUn software]# mkdir /data/oracle/oradata</p>
+<p>[root@myYUn software]# mkdir /data/oracle/inventory</p>
+<p>[root@myYUn software]# mkdir /data/oracle/fast_recovery_area</p>
+<p>[root@myYUn software]# chown -R oracle:oinstall /data/oracle</p>
+<p>[root@myYUn software]# chmod -R 775 /data/oracle</p>
+<h3 id="10、设置oracle用户环境变量"><a href="#10、设置oracle用户环境变量" class="headerlink" title="10、设置oracle用户环境变量"></a>10、设置oracle用户环境变量</h3><p>首先切换到oracle用户下：</p>
+<p>[root@myYUn software]# su -l oracle</p>
+<p>[oracle@myYUn ~]$ vim .bash_profile</p>
+<p>在末尾添加如下内容：</p>
+<pre><code>ORACLE_BASE=/data/oracle
+
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0
+
+ORACLE_SID=orcl
+
+PATH=$PATH:$ORACLE_HOME/bin
+
+export ORACLE_BASE ORACLE_HOME ORACLE_SID PATH</code></pre><p>注意，标红处必须与创建的数据库实例名称一致，否则数据库启动后无法访问。第一次配置完记得source一下。</p>
+<p>[oracle@myYUn ~]$ source .bash_profile</p>
+<h3 id="11、编辑静默安装响应文件"><a href="#11、编辑静默安装响应文件" class="headerlink" title="11、编辑静默安装响应文件"></a>11、编辑静默安装响应文件</h3><p>复制安装文件夹response到当前oracle用户的家目录下：</p>
+<p>[oracle@myYUn ~]$ cp -R /software/database/response/ .</p>
+<p>[oracle@myYUn ~]$ cd response/</p>
+<p>[oracle@myYUn response]$ vim db_install.rsp</p>
+<p>需要设置的选项如下：</p>
+<p>oracle.install.option=INSTALL_DB_SWONLY</p>
+<p>ORACLE_HOSTNAME=CentOS</p>
+<p>UNIX_GROUP_NAME=oinstall</p>
+<p>INVENTORY_LOCATION=/data/oracle/inventory</p>
+<p>SELECTED_LANGUAGES=en,zh_CN</p>
+<p>ORACLE_HOME=/data/oracle/product/11.2.0</p>
+<p>ORACLE_BASE=/data/oracle</p>
+<p>oracle.install.db.InstallEdition=EE</p>
+<p>oracle.install.db.DBA_GROUP=dba</p>
+<p>oracle.install.db.OPER_GROUP=dba</p>
+<p>DECLINE_SECURITY_UPDATES=true</p>
+<h3 id="12、根据响应文件静默安装Oracle11g"><a href="#12、根据响应文件静默安装Oracle11g" class="headerlink" title="12、根据响应文件静默安装Oracle11g"></a>12、根据响应文件静默安装Oracle11g</h3><p>[oracle@myYUn response]$ cd /software/database/</p>
+<p>[oracle@myYUn database]$ ./runInstaller -silent -responseFile /home/oracle/response/db_install.rsp -ignorePrereq</p>
+<p>如果执行以上命令出错，会提示有参数格式，按照提示参数格式修改修改即可，一般是由于word中的字体、符号格式复制到客户端命令行后不一致引起，修改即可。</p>
+<p>楼主遇到了交换空间不足的问题：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125756668-612153407.png" srcset="undefined" alt="img"></p>
+<p>解决方案如下（在root用户下执行）：</p>
+<p>[root@myYUn /]# free</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125808399-1584933411.png" srcset="undefined" alt="img"></p>
+<p>[root@myYUn /]# dd if=/dev/zero of=swapfile bs=1024 count=500000</p>
+<p>500000+0 records in</p>
+<p>500000+0 records out</p>
+<p>512000000 bytes (512 MB) copied, 1.67013 s, 307 MB/s</p>
+<p>[root@myYUn /]# mkswap swapfile</p>
+<p>Setting up swapspace version 1, size = 499996 KiB</p>
+<p>no label, UUID=c5e355eb-e73e-4aa0-b882-cb6d1f88e6bc</p>
+<p>[root@myYUn /]# swapon swapfile</p>
+<p>swapon: /swapfile: insecure permissions 0644, 0600 suggested.</p>
+<p>[root@myYUn /]# free</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513125816910-585169189.png" srcset="undefined" alt="img"></p>
+<p>开始Oracle在后台静默安装。安装过程中，如果提示[WARNING]不必理会，此时安装程序仍在后台进行，如果出现Successfully Setup Software，则安装程序已经停止了。</p>
+<p>可以在以下位置找到本次安装会话的日志:/data/oracle/inventory/logs/installActions2018-05-13_02-14-55PM.log</p>
+<p>可以切换终端执行top命令查看后台进程一直是在安装的，/data目录也在不断增大，</p>
+<p>当出现以下提示时，代表安装成功：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513142625998-1782403312.png" srcset="undefined" alt="img"></p>
+<p>按照要求执行脚本。</p>
+<p>打开终端，退出到root身份登录，执行脚本：</p>
+<p>[oracle@iZ2f570bi1k56uZ database]$ exit</p>
+<p>logout</p>
+<p>[root@iZ2f570bi1k56uZ software]# sh /data/oracle/inventory/orainstRoot.sh</p>
+<p>Changing permissions of /data/oracle/inventory.</p>
+<p>Adding read,write permissions for group.</p>
+<p>Removing read,write,execute permissions for world.</p>
+<p>Changing groupname of /data/oracle/inventory to oinstall.</p>
+<p>The execution of the script is complete.</p>
+<p>[root@iZ2f570bi1k56uZ software]# sh /data/oracle/product/11.2.0/root.sh</p>
+<p>Check /data/oracle/product/11.2.0/install/root_iZ2f570bi1k56uZ_2018-05-13_14-25-04.log for the output of root script</p>
+<h3 id="13、以静默方式配置监听"><a href="#13、以静默方式配置监听" class="headerlink" title="13、以静默方式配置监听"></a>13、以静默方式配置监听</h3><p>重新使用oracle用户登录：</p>
+<p>[root@myYUn software]# su -l oracle</p>
+<p>Last login: Sun May 13 14:09:10 CST 2018 on pts/3</p>
+<p>[oracle@myYUn ~]$ netca /silent /responseFile /home/oracle/response/netca.rsp </p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513145755041-1177063024.png" srcset="undefined" alt="img"></p>
+<p>注意此处，必须使用/silent /responseFile格式，而不是-silent -responseFile，因为是静默安装。</p>
+<p>成功运行后，在/data/oracle/product/11.2.0/network/admin中生成listener.ora和sqlnet.ora</p>
+<p>通过netstat命令可以查看1521端口正在监听。</p>
+<p>Yum安装netstat软件，软件包是在net-tools中。</p>
+<p>[root@myYUn /]# yum install net-tools</p>
+<p>[root@myYUn /]# yum install net-tools</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513145828670-343525754.png" srcset="undefined" alt="img"></p>
+<h3 id="14、以静默方式建立新库，同时也建立一个对应的实例"><a href="#14、以静默方式建立新库，同时也建立一个对应的实例" class="headerlink" title="14、以静默方式建立新库，同时也建立一个对应的实例"></a>14、以静默方式建立新库，同时也建立一个对应的实例</h3><p>[oracle@myYUn ~]$ vim /home/oracle/response/dbca.rsp</p>
+<p>修改文件中以下参数：</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<pre><code>[GENERAL]
+
+# oracle版本，不能更改
+RESPONSEFILE_VERSION = &quot;11.2.0&quot;
+
+# Description   : Type of operation
+OPERATION_TYPE = &quot;createDatabase&quot;
+
+[CREATEDATABASE]
+
+# Description   : Global database name of the database
+# 全局数据库的名字=SID+主机域名
+# 第三方工具链接数据库的时候使用的service名称
+GDBNAME = &quot;orcl.test&quot;
+
+# Description   : System identifier (SID) of the database
+# 对应的实例名字
+SID = &quot;orcl&quot;
+
+# Description   : Name of the template
+# 建库用的模板文件
+TEMPLATENAME = &quot;General_Purpose.dbc&quot;
+
+# Description   : Password for SYS user
+# SYS管理员密码
+SYSPASSWORD = &quot;123456&quot;
+
+# Description   : Password for SYSTEM user
+# SYSTEM管理员密码
+SYSTEMPASSWORD = &quot;123456&quot;
+
+# Description   : Password for SYSMAN user
+# SYSMAN管理员密码
+SYSMANPASSWORD = &quot;123456&quot;
+
+# Description   : Password for DBSNMP user
+# DBSNMP管理员密码
+DBSNMPPASSWORD = &quot;123456&quot;
+
+# Description   : Location of the data file&#39;s
+# 数据文件存放目录
+DATAFILEDESTINATION =/data/oracle/oradata
+
+# Description   : Location of the data file&#39;s
+# 恢复数据存放目录
+RECOVERYAREADESTINATION=/data/oracle/fast_recovery_area
+
+# Description   : Character set of the database
+# 字符集，重要!!! 建库后一般不能更改，所以建库前要确定清楚。
+# (CHARACTERSET = &quot;AL32UTF8&quot; NATIONALCHARACTERSET= &quot;UTF8&quot;)
+CHARACTERSET = &quot;AL32UTF8&quot;
+
+# Description   : total memory in MB to allocate to Oracle
+# oracle内存1638MB,物理内存2G*80%
+TOTALMEMORY = &quot;1638&quot; </code></pre><p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" srcset="undefined" alt="复制代码"></a></p>
+<p>进行静默配置：</p>
+<p>[oracle@myYUn ~]$ dbca -silent -responseFile /home/oracle/response/dbca.rsp</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513185444857-1893532511.png" srcset="undefined" alt="img"></p>
+<p>建库后进行实例进程检查：</p>
+<p>[oracle@myYUn ~]$ ps -ef | grep ora_ | grep -v grep</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513185517202-159926943.png" srcset="undefined" alt="img"></p>
+<p>查看监听状态：</p>
+<p>[oracle@myYUn ~]$ lsnrctl status</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513185543187-265712379.png" srcset="undefined" alt="img"></p>
+<p>数据库创建完成。</p>
+<p>有关详细信息, 请查看以下位置的日志文件: /data/oracle/cfgtoollogs/dbca/orcl/orcl.log。</p>
+<p>数据库信息:</p>
+<p>全局数据库名:orcl.test</p>
+<p>系统标识符 (SID):orcl</p>
+<p>登录查看实例状态：</p>
+<p>[oracle@myYUn ~]$ sqlplus / as sysdba</p>
+<p>SQL&gt; select status from v$instance;</p>
+<p><img src="https://images2018.cnblogs.com/blog/1196304/201805/1196304-20180513194253332-144886941.png" srcset="undefined" alt="img"></p>
+<p>【<a href="https://www.cnblogs.com/mmzs/p/11163265.html" target="_blank" rel="noopener">linux 成功安装oracle后，为其创建一个登录账户</a>】</p>
+<p>如果报错：【ORA-12162: TNS:net service name is incorrectly specified】</p>
+<p>错误原因：【这个错误是因为ORACLE_SID变量没有传进去造成的。】</p>
+<p>解决方法：</p>
+<p>1．查看当前ORACLE_SID</p>
+<p>[oracle@iZ2f570bi1k56uZ ~]$ echo $ORACLE_SID</p>
+<p>orcl         </p>
+<p>2．修改ORACLE_SID和/home/oracle/response/dbca.rsp中的一样                                                                                  </p>
+<p>[oracle@iZ2f570bi1k56uZ ~]$ export ORACLE_SID=orcl</p>
+<p>3．如果遇到ORA-12162: TNS:net service name is incorrectly specified.错误</p>
+<p>参考文章：【<a href="https://www.cnblogs.com/mmzs/p/11162231.html" target="_blank" rel="noopener">ORA-12162: TNS:net service name is incorrectly specified.</a>】</p>
+<p>4．如果依然不能登陆，尝试修改orcle文件夹的权限</p>
+<p>【如果本地连接时，出现监听错误，参考<a href="http://www.cnblogs.com/mmzs/p/9043767.html" target="_blank" rel="noopener">Linux中安装Oracle11g后出现监听的问题及解决办法</a>】</p>
+<h3 id="15、命令行模式静默删除"><a href="#15、命令行模式静默删除" class="headerlink" title="15、命令行模式静默删除"></a>15、命令行模式静默删除</h3><p>1、首先查看dbca的帮助信息</p>
+<p>dbca -help</p>
+<p>修改/home/oracle/response/dbca.rsp文件里以下几个参数，下面三个参数根据建库实际情况进行修改：</p>
+<p>OPERATION_TYPE = “deleteDatabase”</p>
+<p>SOURCEDB = “orcl”</p>
+<p>SYSDBAUSERNAME = “sys”</p>
+<p>SYSDBAPASSWORD = “123456”</p>
+<p>然后运行：</p>
+<p>dbca -silent -responseFile /home/oracle/response/dbca.rsp</p>
+<p>各参数含义如下:</p>
+<p>-silent 表示以静默方式删除</p>
+<p>-responseFile 表示使用哪个响应文件,必需使用绝对路径</p>
+<p>RESPONSEFILE_VERSION 响应文件模板的版本,该参数不要更改</p>
+<p>OPERATION_TYPE 安装类型,该参数不要更改</p>
+<p>SOURCEDB 数据库名,不是全局数据库名,即不包含db_domain</p>
+<p>很简单数据库卸载完成了，请注意，只是数据库卸载完了，数据库软件还是在的。</p>
+<p>2、使用DBCA卸载数据库</p>
+<p>dbca -silent -delete Database -responseFile dbca.rsp</p>
+<p>a.选项-silent表示静默安装，免安装交互，大部分安装信息也不输出</p>
+<p>b.选项-responseFile指定应答文件，要求用绝对路径</p>
+<h3 id="16，一些常用命令"><a href="#16，一些常用命令" class="headerlink" title="16，一些常用命令"></a>16，一些常用命令</h3><p>进入到数据库后执行，查询数据库服务的名称</p>
+<p>select global_name from global_name：</p>
+<p>启动监听</p>
+<p>lsnrctl start</p>
+<p>关闭监听</p>
+<p>lsnrctl stop</p>
+<p>查看监听状态</p>
+<p>Lsnrctl status</p>
+<p>进入到数据库执行，关闭数据库</p>
+<p>shutdown</p>
+<p>进入到数据库执行，打开数据库</p>
+<p>startup</p>
+
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "centos安装oracle&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
