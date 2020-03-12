@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="description" content="">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <title>mysql50道经典题 ~ Hexo</title>
+
+  <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css"  >
+<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css"  >
+<link rel="stylesheet" href="/lib/mdbootstrap/css/mdb.min.css"  >
+<link rel="stylesheet" href="/lib/github-markdown/github-markdown.min.css"  >
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1067060_qzomjdt8bmp.css">
+
+
+
+  <link rel="stylesheet" href="/lib/prettify/tomorrow-night-eighties.min.css"  >
+
+<link rel="stylesheet" href="/css/main.css"  >
+
+
+  <link rel="stylesheet" href="/lib/fancybox/jquery.fancybox.min.css"  >
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>cuicuihao</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/archives/">Archives</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/">Categories</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/tags/">Tags</a>
+          </li>
+        
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+</nav>
+
+    <div class="view intro-2" id="background"
+         style="background: url('/img/default.png')no-repeat center center;
+           background-size: cover;
+           background-attachment: fixed;">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              <br>
+              
+                <p class="mt-3">
+                  <i class="fas fa-calendar-alt" aria-hidden="true"></i>&nbsp;
+                  星期三, 三月 11日 2020, 2:25 下午
+                </p>
+              
+
+              <p>
+                
+                  
+                  &nbsp;<i class="far fa-chart-bar"></i>
+                  <span class="post-count">
+                    3.6k 字
+                  </span>&nbsp;
+                
+
+                
+                  
+                  &nbsp;<i class="far fa-clock"></i>
+                  <span class="post-count">
+                      17 分钟
+                  </span>&nbsp;
+                
+
+                
+                  <!-- 不蒜子统计文章PV -->
+                  
+                  &nbsp;<i class="far fa-eye" aria-hidden="true"></i>&nbsp;
+                  <span id="busuanzi_container_page_pv">
+                    <span id="busuanzi_value_page_pv"></span> 次
+                  </span>&nbsp;
+                
+              </p>
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="py-5 z-depth-3" id="board">
+        <div class="post-content mx-auto" id="post">
+          <div class="markdown-body">
+            <p>1,用一条SQL语句,查询出每门课都大于80分的学生姓名<br>name   kecheng   fenshu<br>张三     语文       81<br>张三     数学       75<br>李四     语文       76<br>李四     数学       90<br>王五     语文       81<br>王五     数学       100<br>王五     英语       90</p>
+<pre><code>SELECT NAME,KECHENG,SCORE FROM STUDENT_1 WHERE SCORE &gt;80;</code></pre><p>2,所有部门之间的比赛组合<br>一个叫department的表，里面只有一个字段name,一共有4条纪录，分别是a,b,c,d,对应四个球对，现在四个球对进行比赛，用一条sql语句显示所有可能的比赛组合.<br>答:<br>SELECT a.name,b.name<br>FROM<br>(SELECT name from DEPARTMENT_2) a,<br>(SELECT name from DEPARTMENT_2) b<br>where a.name&lt;b.name;<br>3,统计每年每月的信息<br>year  month amount<br>1991   1     1.1<br>1991   2     1.2<br>1991   3     1.3<br>1991   4     1.4<br>1992   1     2.1<br>1992   2     2.2<br>1992   3     2.3<br>1992   4     2.4<br>查成这样一个结果<br>year m1  m2  m3  m4<br>1991 1.1 1.2 1.3 1.4<br>1992 2.1 2.2 2.3 2.4 </p>
+<pre><code>    SELECT YEAR,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 1 AND YEAR = a.YEAR) m1,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 2 AND YEAR = a.YEAR) m2,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 3 AND YEAR = a.YEAR) m3,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 4 AND YEAR = a.YEAR) m4
+    FROM AMOUNTS_3 A
+    GROUP BY YEAR;
+或者
+    SELECT DISTINCT YEAR,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 1 AND YEAR = a.YEAR) m1,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 2 AND YEAR = a.YEAR) m2,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 3 AND YEAR = a.YEAR) m3,
+    (SELECT AMOUNT FROM AMOUNTS_3 WHERE MOUNTH = 4 AND YEAR = a.YEAR) m4
+    FROM AMOUNTS_3 A
+    ORDER BY YEAR;</code></pre><pre><code>DISTINCT:返回唯一不同的值</code></pre><p>4,删除除了id号不同,其他都相同的学生冗余信息<br>学生表 如下:<br>id号   学号   姓名 课程编号 课程名称 分数<br>1        2005001  张三  0001      数学    69<br>2        2005002  李四  0001      数学    89<br>3        2005001  张三  0001      数学    69</p>
+<pre><code>DELETE FROM STUDENT_4 
+WHERE (STU_NO,NAME,CLASS_NO,CLASS_NAME,SCORE) in(
+    SELECT STU_NO,NAME,CLASS_NO,CLASS_NAME,SCORE
+    FROM STUDENT_4 
+    GROUP BY STU_NO,NAME,CLASS_NO,CLASS_NAME,SCORE
+    HAVING COUNT(1)&gt;1
+    )AND ROWID NOT IN(
+    SELECT MIN(ROWID) FROM STUDENT_4 
+    GROUP BY STU_NO,NAME,CLASS_NO,CLASS_NAME,SCORE
+    HAVING COUNT(1)&gt;1);</code></pre><pre><code>ROWID:伪列,每一行数据都有一个唯一的标识符,真实存在</code></pre><p>5,求出小于45岁的各个老师所带的大于12岁的学生人数<br>数据库中有3个表 teacher 表，student表，tea_stu关系表。<br>teacher 表 teaID name age<br>student 表 stuID name age<br>teacher_student表 teaID stuID<br>要求用一条sql查询出这样的结果<br>    1.显示的字段要有老师name, age 每个老师所带的学生人数<br>    2 只列出老师age为40以下，学生age为12以上的记录</p>
+<pre><code>SELECT b.NAME,b.AGE,COUNT(1)
+FROM STUDENT_5 a,TEACHER_5 b,TEA_STU_5 c
+WHERE a.stuid = c.stuid AND b.teaid = c.teaid AND b.age&lt;40 AND a.age&gt;12
+GROUP BY b.name,b.age,b.teaid;</code></pre><p>6,<br>    Student(S#,Sname,Sage,Ssex) 学生表<br>        S#：学号；<br>        Sname：学生姓名；<br>        Sage：学生年龄；<br>        Ssex：学生性别<br>    Course(C#,Cname,T#) 课程表<br>        C#,课程编号；<br>        Cname：课程名字；<br>        T#：教师编号<br>    SC(S#,C#,score) 成绩表<br>        S#：学号；<br>        C#,课程编号；<br>        score：成绩<br>    Teacher(T#,Tname) 教师表<br>        T#：教师编号；<br>        Tname：教师名字<br>    问题： </p>
+<h5 id="1、查询“001”课程比“002”课程成绩高的所有学生的学号；"><a href="#1、查询“001”课程比“002”课程成绩高的所有学生的学号；" class="headerlink" title="1、查询“001”课程比“002”课程成绩高的所有学生的学号；"></a>1、查询“001”课程比“002”课程成绩高的所有学生的学号；</h5><pre><code>SELECT a.S# 
+FROM
+(SELECT S#,SCORE FROM SC_6 WHERE C#=&#39;001&#39;) a,
+(SELECT S#,SCORE FROM SC_6 WHERE C#=&#39;002&#39;) b
+WHERE a.S# = b.S# AND a.SCORE&gt;b.SCORE;</code></pre><h5 id="2、查询平均成绩大于60分的同学的学号和平均成绩；"><a href="#2、查询平均成绩大于60分的同学的学号和平均成绩；" class="headerlink" title="2、查询平均成绩大于60分的同学的学号和平均成绩；"></a>2、查询平均成绩大于60分的同学的学号和平均成绩；</h5><p>​    </p>
+<pre><code>SELECT S#,AVG(SCORE) FROM SC_6 
+GROUP BY S#
+HAVING AVG(SCORE)&gt;60;</code></pre><h5 id="3、查询所有同学的学号、姓名、选课数、总成绩；"><a href="#3、查询所有同学的学号、姓名、选课数、总成绩；" class="headerlink" title="3、查询所有同学的学号、姓名、选课数、总成绩；"></a>3、查询所有同学的学号、姓名、选课数、总成绩；</h5><pre><code>SELECT STUDENT_6.S# 学号,SNAME 姓名,COUNT(1) 选课数,SUM(SCORE) 总成绩
+FROM SC_6,STUDENT_6
+WHERE SC_6.S# = STUDENT_6.S#
+GROUP BY STUDENT_6.S#,SNAME;</code></pre><h5 id="4、查询姓“李”的老师的个数；"><a href="#4、查询姓“李”的老师的个数；" class="headerlink" title="4、查询姓“李”的老师的个数；"></a>4、查询姓“李”的老师的个数；</h5><p>​    </p>
+<pre><code>SELECT COUNT(1) FROM TEACHER_6 WHERE TNAME LIKE(&#39;李%&#39;);</code></pre><pre><code>--LIKE 模糊查询 后面跟通配符 _:一个任意字符 %:多个任意字符</code></pre><h5 id="5、查询没学过“叶平”老师课的同学的学号、姓名；"><a href="#5、查询没学过“叶平”老师课的同学的学号、姓名；" class="headerlink" title="5、查询没学过“叶平”老师课的同学的学号、姓名；"></a>5、查询没学过“叶平”老师课的同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE S# NOT IN(
+    SELECT s.S# FROM
+    TEACHER_6 t,SC_6 s,COURSE_6 c 
+    WHERE t.T# = c.T#  AND c.C# = s.C# AND TNAME = &#39;叶平&#39;
+);</code></pre><h5 id="6、查询学过“001”并且也学过编号“002”课程的同学的学号、姓名；"><a href="#6、查询学过“001”并且也学过编号“002”课程的同学的学号、姓名；" class="headerlink" title="6、查询学过“001”并且也学过编号“002”课程的同学的学号、姓名；"></a>6、查询学过“001”并且也学过编号“002”课程的同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE S# in(
+    SELECT a.s# FROM
+    (SELECT * FROM SC_6 WHERE C# = &#39;001&#39;) a,
+    (SELECT * FROM SC_6 WHERE C# = &#39;002&#39;) b 
+    WHERE a.s# = b.s#
+);</code></pre><h5 id="7、查询学过“叶平”老师所教的所有课的同学的学号、姓名；"><a href="#7、查询学过“叶平”老师所教的所有课的同学的学号、姓名；" class="headerlink" title="7、查询学过“叶平”老师所教的所有课的同学的学号、姓名；"></a>7、查询学过“叶平”老师所教的所有课的同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE S# IN(
+    SELECT s.S# FROM TEACHER_6 t,COURSE_6 c,SC_6 s
+    WHERE t.T# = c.T#  AND s.C# =c.C#  AND t.TNAME = &#39;叶平&#39;
+    GROUP BY S.S# HAVING COUNT(1) = (
+    SELECT COUNT(1) FROM TEACHER_6,COURSE_6 
+    WHERE TEACHER_6.T# = COURSE_6.T#     
+    AND TEACHER_6.TNAME = &#39;叶平&#39;
+    )
+);</code></pre><h5 id="8、查询课程编号“002”的成绩比课程编号“001”课程低的所有同学的学号、姓名；"><a href="#8、查询课程编号“002”的成绩比课程编号“001”课程低的所有同学的学号、姓名；" class="headerlink" title="8、查询课程编号“002”的成绩比课程编号“001”课程低的所有同学的学号、姓名；"></a>8、查询课程编号“002”的成绩比课程编号“001”课程低的所有同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE S# IN(
+    SELECT a.S# FROM
+    (SELECT S#,SCORE FROM SC_6 WHERE C# =&#39;001&#39;) a,
+    (SELECT S#,SCORE FROM SC_6 WHERE C# =&#39;002&#39;) b
+    WHERE a.SCORE&gt;b.SCORE AND a.S# = b.S#
+);</code></pre><h5 id="9、查询所有课程成绩小于60分的同学的学号、姓名；"><a href="#9、查询所有课程成绩小于60分的同学的学号、姓名；" class="headerlink" title="9、查询所有课程成绩小于60分的同学的学号、姓名；"></a>9、查询所有课程成绩小于60分的同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE s# NOT IN(
+SELECT S# FROM SC_6 WHERE SCORE &gt; 60);</code></pre><h5 id="10、查询没有学全所有课的同学的学号、姓名；"><a href="#10、查询没有学全所有课的同学的学号、姓名；" class="headerlink" title="10、查询没有学全所有课的同学的学号、姓名；"></a>10、查询没有学全所有课的同学的学号、姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE s#  NOT IN (
+SELECT s# FROM SC_6 GROUP BY s# HAVING COUNT(1) = (
+SELECT COUNT(1) FROM COURSE_6 c,TEACHER_6 t
+WHERE  c.T# = t.T#)
+ );</code></pre><h5 id="11、查询至少有一门课与学号为“1001”的同学所学相同的同学的学号和姓名；"><a href="#11、查询至少有一门课与学号为“1001”的同学所学相同的同学的学号和姓名；" class="headerlink" title="11、查询至少有一门课与学号为“1001”的同学所学相同的同学的学号和姓名；"></a>11、查询至少有一门课与学号为“1001”的同学所学相同的同学的学号和姓名；</h5><pre><code>SELECT S#,SNAME FROM STUDENT_6 WHERE S# IN
+(
+SELECT DISTINCT S# FROM SC_6  WHERE C# IN(
+SELECT C# FROM SC_6 WHERE S# = &#39;1001&#39;)
+);</code></pre><h5 id="12、查询至少学过学号为“1001”同学所有一门课的其他同学学号和姓名；"><a href="#12、查询至少学过学号为“1001”同学所有一门课的其他同学学号和姓名；" class="headerlink" title="12、查询至少学过学号为“1001”同学所有一门课的其他同学学号和姓名；"></a>12、查询至少学过学号为“1001”同学所有一门课的其他同学学号和姓名；</h5><pre><code>SELECT DISTINCT STUDENT_6.S#,SNAME FROM
+     STUDENT_6,SC_6 WHERE C# IN(
+     SELECT C# FROM SC_6 WHERE S# = &#39;1001&#39;
+     ) AND STUDENT_6.S# = SC_6.S#
+        AND STUDENT_6.S# NOT IN &#39;1001&#39;;    </code></pre><h5 id="13、把“SC”表中“叶平”老师教的课的成绩都更改为此课程的平均成绩；"><a href="#13、把“SC”表中“叶平”老师教的课的成绩都更改为此课程的平均成绩；" class="headerlink" title="13、把“SC”表中“叶平”老师教的课的成绩都更改为此课程的平均成绩；"></a>13、把“SC”表中“叶平”老师教的课的成绩都更改为此课程的平均成绩；</h5><pre><code>UPDATE SC_6 a SET SCORE =(
+    SELECT AVG(SCORE) FROM SC_6 WHERE a.C# = C# GROUP BY C#
+    ) WHERE C# IN(
+    SELECT C# FROM TEACHER_6,COURSE_6 WHERE TNAME = &#39;叶平&#39; 
+    AND COURSE_6.T# = TEACHER_6.t#
+    );</code></pre><h5 id="14、查询和“1002”号的同学学习的课程完全相同的其他同学学号和姓名；"><a href="#14、查询和“1002”号的同学学习的课程完全相同的其他同学学号和姓名；" class="headerlink" title="14、查询和“1002”号的同学学习的课程完全相同的其他同学学号和姓名；"></a>14、查询和“1002”号的同学学习的课程完全相同的其他同学学号和姓名；</h5><pre><code>SELECT S# FROM SC_6 WHERE s# NOT IN(
+    SELECT S# FROM SC_6 WHERE C# NOT IN(
+        SELECT C# FROM SC_6 WHERE S# = &#39;1002&#39;
+        )
+    ) GROUP BY s# HAVING COUNT(1) =(SELECT COUNT(1) FROM SC_6 WHERE S# = &#39;1002&#39; GROUP BY S# );</code></pre><h5 id="15、删除学习“叶平”老师课的SC表记录；"><a href="#15、删除学习“叶平”老师课的SC表记录；" class="headerlink" title="15、删除学习“叶平”老师课的SC表记录；"></a>15、删除学习“叶平”老师课的SC表记录；</h5><pre><code class="DELETE">(SELECT C# FROM COURSE_6,TEACHER_6 
+WHERE COURSE_6.T# = TEACHER_6.T# AND TNAME = &#39;叶平&#39;);</code></pre>
+<h5 id="16、向SC表中插入一些记录，这些记录要求符合以下条件：没有上过编号“003”课程的同学学号2号课的平均绩；"><a href="#16、向SC表中插入一些记录，这些记录要求符合以下条件：没有上过编号“003”课程的同学学号2号课的平均绩；" class="headerlink" title="16、向SC表中插入一些记录，这些记录要求符合以下条件：没有上过编号“003”课程的同学学号2号课的平均绩；"></a>16、向SC表中插入一些记录，这些记录要求符合以下条件：没有上过编号“003”课程的同学学号2号课的平均绩；</h5><h5 id="17、按平均成绩从高到低显示所有学生的“数据库”、“企业管理”、“英语”三门的课程成绩，按如下形式显示-学生ID-数据库-企业管理-英语-有效课程数-有效平均分"><a href="#17、按平均成绩从高到低显示所有学生的“数据库”、“企业管理”、“英语”三门的课程成绩，按如下形式显示-学生ID-数据库-企业管理-英语-有效课程数-有效平均分" class="headerlink" title="17、按平均成绩从高到低显示所有学生的“数据库”、“企业管理”、“英语”三门的课程成绩，按如下形式显示:学生ID,,数据库,企业管理,英语,有效课程数,有效平均分"></a>17、按平均成绩从高到低显示所有学生的“数据库”、“企业管理”、“英语”三门的课程成绩，按如下形式显示:学生ID,,数据库,企业管理,英语,有效课程数,有效平均分</h5><pre><code>SELECT DISTINCT S#,
+(SELECT SCORE FROM SC_6,COURSE_6 WHERE SC_6.C# = COURSE_6.C#  AND SC_6.S# = a.S# AND CNAME = &#39;数据库&#39;) 数据库,
+(SELECT SCORE FROM SC_6,COURSE_6 WHERE SC_6.C# = COURSE_6.C#  AND SC_6.S# = a.S# AND CNAME = &#39;企业管理&#39;) 企业管理,
+(SELECT SCORE FROM SC_6,COURSE_6 WHERE SC_6.C# = COURSE_6.C#  AND SC_6.S# = a.S# AND CNAME = &#39;英语&#39;) 英语,
+(SELECT COUNT(1) FROM SC_6,COURSE_6 WHERE SC_6.C# = COURSE_6.C#  AND SC_6.S# = a.S# AND CNAME IN (&#39;英语&#39;,&#39;数据库&#39;,&#39;企业管理&#39;)) 有效课程数,
+ROUND((SELECT AVG(SCORE) FROM SC_6,COURSE_6 WHERE SC_6.C# = COURSE_6.C# AND SC_6.S# = a.S# AND CNAME IN (&#39;英语&#39;,&#39;数据库&#39;,&#39;企业管理&#39;)),2) 
+有效平均分
+FROM SC_6 a
+ORDER BY 有效平均分 DESC;</code></pre><h5 id="18、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分"><a href="#18、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分" class="headerlink" title="18、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分"></a>18、查询各科成绩最高和最低的分：以如下形式显示：课程ID，最高分，最低分</h5><pre><code>SELECT C#,MAX(SCORE) 最高分,MIN(SCORE) 最低分 FROM SC_6 GROUP BY C#; </code></pre><h5 id="19、按各科平均成绩从低到高和及格率的百分数从高到低顺序"><a href="#19、按各科平均成绩从低到高和及格率的百分数从高到低顺序" class="headerlink" title="19、按各科平均成绩从低到高和及格率的百分数从高到低顺序"></a>19、按各科平均成绩从低到高和及格率的百分数从高到低顺序</h5><pre><code>SELECT C#,
+ROUND((SELECT AVG(SCORE) FROM SC_6 WHERE C# = a.C# GROUP  BY C#),2) 平均分,
+(ROUND((SELECT COUNT(1) FROM SC_6 WHERE a.C# = C# AND SCORE&gt;60 GROUP BY C#)/
+(SELECT COUNT(1) FROM SC_6 WHERE a.C# = C#  GROUP BY C#),2)*100 || &#39;%&#39;) 及格率
+FROM COURSE_6 a
+ORDER BY 平均分 asc,及格率 DESC; </code></pre><h5 id="20、查询如下课程平均成绩和及格率的百分数-用”1行”显示-企业管理（001），马克思（002），OO-amp-UML-（003），数据库（004）"><a href="#20、查询如下课程平均成绩和及格率的百分数-用”1行”显示-企业管理（001），马克思（002），OO-amp-UML-（003），数据库（004）" class="headerlink" title="20、查询如下课程平均成绩和及格率的百分数(用”1行”显示): 企业管理（001），马克思（002），OO&amp;UML （003），数据库（004）"></a>20、查询如下课程平均成绩和及格率的百分数(用”1行”显示): 企业管理（001），马克思（002），OO&amp;UML （003），数据库（004）</h5><pre><code>SELECT CNAME,
+ROUND((SELECT AVG(SCORE) FROM SC_6 WHERE C# = a.C# GROUP  BY C#),2) 平均分,
+(ROUND((SELECT COUNT(1) FROM SC_6 WHERE a.C# = C# AND SCORE&gt;60 GROUP BY C#)/
+(SELECT COUNT(1) FROM SC_6 WHERE a.C# = C#  GROUP BY C#),2)*100 || &#39;%&#39;) 及格率
+FROM COURSE_6 a
+WHERE c# IN (&#39;001&#39;,&#39;002&#39;,&#39;003&#39;,&#39;004&#39;); </code></pre><h5 id="21、查询不同老师所教不同课程平均分从高到低显示"><a href="#21、查询不同老师所教不同课程平均分从高到低显示" class="headerlink" title="21、查询不同老师所教不同课程平均分从高到低显示"></a>21、查询不同老师所教不同课程平均分从高到低显示</h5><pre><code>SELECT 
+(SELECT TNAME FROM TEACHER_6 WHERE a.T# = T#) 老师,
+(SELECT CNAME from COURSE_6 WHERE a.C# = C#) 课程,
+ROUND((SELECT AVG(SCORE) FROM SC_6 where a.C# = C# GROUP BY c#),2) 平均分
+FROM COURSE_6 a
+ORDER BY 平均分 DESC;</code></pre><h5 id="23、统计列印各科成绩-各分数段人数-课程ID-课程名称-100-85-85-70-70-60-lt-60"><a href="#23、统计列印各科成绩-各分数段人数-课程ID-课程名称-100-85-85-70-70-60-lt-60" class="headerlink" title="23、统计列印各科成绩,各分数段人数:课程ID,课程名称,[100-85],[85-70],[70-60],[ &lt;60]"></a>23、统计列印各科成绩,各分数段人数:课程ID,课程名称,[100-85],[85-70],[70-60],[ &lt;60]</h5><pre><code>SELECT C#,CNAME,
+(SELECT COUNT(1) FROM SC_6 WHERE a.c# = c# AND SCORE BETWEEN 85 AND 100 GROUP BY C#) &quot;[100-85]&quot;,
+(SELECT COUNT(1) FROM SC_6 WHERE a.c# = c# AND SCORE BETWEEN 70 AND 84 GROUP BY C#) &quot;[84-70]&quot;,
+(CASE WHEN(SELECT COUNT(1) FROM SC_6 WHERE a.c# = c# AND SCORE BETWEEN 60 AND 69 GROUP BY C#)Is NULL THEN 0
+ELSE(SELECT COUNT(1) FROM SC_6 WHERE a.c# = c# AND SCORE BETWEEN 60 AND 69 GROUP BY C#) END) &quot;[69-60]&quot;,
+(SELECT COUNT(1) FROM SC_6 WHERE a.c# = c# AND SCORE &lt;60 GROUP BY C#) &quot;[&lt;60]&quot;
+FROM COURSE_6 a;</code></pre><h5 id="24、查询学生平均成绩及其名次"><a href="#24、查询学生平均成绩及其名次" class="headerlink" title="24、查询学生平均成绩及其名次"></a>24、查询学生平均成绩及其名次</h5><pre><code>SELECT a.*,ROWNUM 名次 FROM 
+(SELECT S#,
+    ROUND(AVG(SCORE), 2) 平均成绩 
+    FROM SC_6 
+    GROUP BY S# 
+    ORDER BY 平均成绩 DESC
+) a;</code></pre><h5 id="25、查询各科成绩前三名的记录-不考虑成绩并列情况"><a href="#25、查询各科成绩前三名的记录-不考虑成绩并列情况" class="headerlink" title="25、查询各科成绩前三名的记录:(不考虑成绩并列情况)"></a>25、查询各科成绩前三名的记录:(不考虑成绩并列情况)</h5><pre><code>SELECT * FROM (
+               SELECT SC_6.S#,
+               SC_6.C#,
+               SC_6.SCORE,
+               ROW_NUMBER() OVER(PARTITION BY SC_6.C# ORDER BY SC_6.SCORE DESC) RN
+               FROM SC_6) A
+WHERE A.RN &lt;= 3;</code></pre><pre><code>ROW_NUMBER() OVER(PARTITION BY 列名1 ORDER BY 列名2 DESC
+---------当列明1相同时，对列名2进行升序</code></pre><h5 id="26、查询每门课程被选修的学生数"><a href="#26、查询每门课程被选修的学生数" class="headerlink" title="26、查询每门课程被选修的学生数"></a>26、查询每门课程被选修的学生数</h5><pre><code>SELECT a.C#,b.CNAME,COUNT(1) 数量 
+FROM SC_6 a,COURSE_6 b 
+where a.C# = b.c# 
+GROU P BY a.C#,b.CNAME;</code></pre><h5 id="27、查询出只选修了一门课程的全部学生的学号和姓名"><a href="#27、查询出只选修了一门课程的全部学生的学号和姓名" class="headerlink" title="27、查询出只选修了一门课程的全部学生的学号和姓名"></a>27、查询出只选修了一门课程的全部学生的学号和姓名</h5><pre><code>SELECT A.S#,B.SNAME,COUNT(1) 选修门数 
+FROM SC_6 A,STUDENT_6 B
+WHERE A.S# = B.S#
+GROUP BY A.S#,B.SNAME
+HAVING COUNT(1) = 1;</code></pre><h5 id="28、查询男生、女生人数"><a href="#28、查询男生、女生人数" class="headerlink" title="28、查询男生、女生人数"></a>28、查询男生、女生人数</h5><pre><code>SELECT 
+(CASE SSEX WHEN 1 THEN &#39;男&#39; WHEN 2 THEN &#39;女&#39; END) 性别,
+COUNT(1) 数量 
+FROM STUDENT_6 
+GROUP BY SSEX;</code></pre><h5 id="29、查询姓“张”的学生名单"><a href="#29、查询姓“张”的学生名单" class="headerlink" title="29、查询姓“张”的学生名单"></a>29、查询姓“张”的学生名单</h5><pre><code>SELECT SNAME FROM STUDENT_6 WHERE SNAME LIKE &#39;张%&#39;;</code></pre><h5 id="30、查询同名同性学生名单，并统计同名人数"><a href="#30、查询同名同性学生名单，并统计同名人数" class="headerlink" title="30、查询同名同性学生名单，并统计同名人数"></a>30、查询同名同性学生名单，并统计同名人数</h5><pre><code>SELECT t.SNAME,COUNT(1) 
+FROM(
+    SELECT  DISTINCT a.SNAME,a.S# 
+    FROM STUDENT_6 a,STUDENT_6 b 
+    WHERE a.SNAME = b.SNAME AND a.S# != b.S#
+    ) t
+GROUP BY t.SNAME;</code></pre><h5 id="31、1981年出生的学生名单-注：Student表中Sage列的类型是datetime"><a href="#31、1981年出生的学生名单-注：Student表中Sage列的类型是datetime" class="headerlink" title="31、1981年出生的学生名单(注：Student表中Sage列的类型是datetime)"></a>31、1981年出生的学生名单(注：Student表中Sage列的类型是datetime)</h5><pre><code>SELECT S#,SNAME 
+FROM STUDENT_6 
+WHERE SBIRTH
+BETWEEN TO_DATE(&#39;1981-01-01 00:00:00&#39;, &#39;yyyy-mm-dd hh24:mi:ss&#39;) 
+AND TO_DATE(&#39;1981-12-12 23:59:59&#39;, &#39;yyyy-mm-dd hh24:mi:ss&#39;);</code></pre><h5 id="32、查询每门课程的平均成绩，结果按平均成绩升序排列，平均成绩相同时，按课程号降序排列"><a href="#32、查询每门课程的平均成绩，结果按平均成绩升序排列，平均成绩相同时，按课程号降序排列" class="headerlink" title="32、查询每门课程的平均成绩，结果按平均成绩升序排列，平均成绩相同时，按课程号降序排列"></a>32、查询每门课程的平均成绩，结果按平均成绩升序排列，平均成绩相同时，按课程号降序排列</h5><pre><code>SELECT C#,
+ROUND(AVG(SCORE), 2) 平均分
+FROM SC_6
+GROUP BY C#
+ORDER BY 平均分 ASC,C# DESC;</code></pre><h5 id="33、查询平均成绩大于85的所有学生的学号、姓名和平均成绩"><a href="#33、查询平均成绩大于85的所有学生的学号、姓名和平均成绩" class="headerlink" title="33、查询平均成绩大于85的所有学生的学号、姓名和平均成绩"></a>33、查询平均成绩大于85的所有学生的学号、姓名和平均成绩</h5><pre><code>SELECT S#,C#,avg(score) 平均成绩 
+FROM SC_6 
+GROUP BY s#,c#  
+HAVING AVG(SCORE)&gt;85;</code></pre><h5 id="34、查询课程名称为“数据库”，且分数低于60的学生姓名和分数"><a href="#34、查询课程名称为“数据库”，且分数低于60的学生姓名和分数" class="headerlink" title="34、查询课程名称为“数据库”，且分数低于60的学生姓名和分数"></a>34、查询课程名称为“数据库”，且分数低于60的学生姓名和分数</h5><pre><code>SELECT SC_6.S#,SCORE 
+FROM SC_6,STUDENT_6
+WHERE C# IN(SELECT C# FROM COURSE_6 WHERE CNAME = &#39;数据库&#39;)
+AND SC_6.S# = STUDENT_6.S#
+AND SCORE&lt;60;</code></pre><h5 id="35、查询所有学生的选课情况；"><a href="#35、查询所有学生的选课情况；" class="headerlink" title="35、查询所有学生的选课情况；"></a>35、查询所有学生的选课情况；</h5><pre><code>SELECT STUDENT_6.S#,SNAME,CNAME
+FROM STUDENT_6,COURSE_6,SC_6 
+WHERE STUDENT_6.S# = SC_6.S# 
+AND COURSE_6.C# = SC_6.C#;</code></pre><h5 id="36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；"><a href="#36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；" class="headerlink" title="36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；"></a>36、查询任何一门课程成绩在70分以上的姓名、课程名称和分数；</h5><pre><code>SELECT t.SNAME,COUNT(1) 
+FROM(
+    SELECT  DISTINCT a.SNAME,a.S# 
+    FROM STUDENT_6 a,STUDENT_6 b 
+    WHERE a.SNAME = b.SNAME AND a.S# != b.S#
+    ) t
+GROUP BY t.SNAME;</code></pre><h5 id="37、查询不及格的课程，并按课程号从大到小排列"><a href="#37、查询不及格的课程，并按课程号从大到小排列" class="headerlink" title="37、查询不及格的课程，并按课程号从大到小排列"></a>37、查询不及格的课程，并按课程号从大到小排列</h5><pre><code>SELECT SNAME,CNAME,SCORE 
+FROM STUDENT_6,SC_6,COURSE_6 
+WHERE SC_6.C# = COURSE_6.C# 
+AND STUDENT_6.S# = SC_6.S# 
+AND SCORE &gt;70;</code></pre><h5 id="38、查询课程编号为003且课程成绩在80分以上的学生的学号和姓名；"><a href="#38、查询课程编号为003且课程成绩在80分以上的学生的学号和姓名；" class="headerlink" title="38、查询课程编号为003且课程成绩在80分以上的学生的学号和姓名；"></a>38、查询课程编号为003且课程成绩在80分以上的学生的学号和姓名；</h5><pre><code>SELECT SC_6.S#,SNAME 
+FROM SC_6,STUDENT_6 
+WHERE C# = &#39;003&#39;  
+AND SCORE &gt; 80 
+AND SC_6.S# = STUDENT_6.S#;</code></pre><h5 id="39、求选了课程的学生人数"><a href="#39、求选了课程的学生人数" class="headerlink" title="39、求选了课程的学生人数"></a>39、求选了课程的学生人数</h5><pre><code class="sql">SELECT COUNT(1) FROM SC_6 WHERE SCORE IS NOT NULL ;</code></pre>
+<h5 id="40、查询选修“叶平”老师所授课程的学生中，成绩最高的学生姓名及其成绩"><a href="#40、查询选修“叶平”老师所授课程的学生中，成绩最高的学生姓名及其成绩" class="headerlink" title="40、查询选修“叶平”老师所授课程的学生中，成绩最高的学生姓名及其成绩"></a>40、查询选修“叶平”老师所授课程的学生中，成绩最高的学生姓名及其成绩</h5><pre><code class="sql">SELECT STUDENT_6.S#,C#,STUDENT_6.SNAME,SC_6.SCORE
+FROM SC_6,STUDENT_6 
+WHERE STUDENT_6.S# = SC_6.S# 
+AND (C#,SCORE) IN 
+(
+SELECT C#,MAX(SCORE)
+FROM SC_6,STUDENT_6 
+WHERE SC_6.S# = STUDENT_6.S# 
+AND C# IN(SELECT C# FROM TEACHER_6,COURSE_6 WHERE TNAME = &#39;叶平&#39; AND TEACHER_6.T# = COURSE_6.T#) 
+GROUP BY C#
+);</code></pre>
+<h5 id="41、查询各个课程及相应的选修人数"><a href="#41、查询各个课程及相应的选修人数" class="headerlink" title="41、查询各个课程及相应的选修人数"></a>41、查询各个课程及相应的选修人数</h5><pre><code>SELECT C#,COUNT(1) FROM SC_6 GROUP BY C# ;</code></pre><h5 id="42、查询不同课程成绩相同的学生的学号、课程号、学生成绩"><a href="#42、查询不同课程成绩相同的学生的学号、课程号、学生成绩" class="headerlink" title="42、查询不同课程成绩相同的学生的学号、课程号、学生成绩"></a>42、查询不同课程成绩相同的学生的学号、课程号、学生成绩</h5><pre><code>SELECT A.S#,B.C#,A.C#,A.SCORE 
+FROM SC_6 a,SC_6 b 
+WHERE a.C# != b.C# 
+AND a.S# = b.S#
+AND a.SCORE = b.SCORE;</code></pre><h5 id="43、查询每门功成绩最好的前两名"><a href="#43、查询每门功成绩最好的前两名" class="headerlink" title="43、查询每门功成绩最好的前两名"></a>43、查询每门功成绩最好的前两名</h5><pre><code>SELECT a.* 
+FROM (
+SELECT C#,S#,SCORE,ROW_NUMBER() OVER(PARTITION BY C# ORDER BY     SCORE) 排名 
+FROM SC_6
+) a 
+WHERE a.&quot;排名&quot;&lt;3;</code></pre><h5 id="44、统计每门课程的学生选修人数（超过10人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，查询结果按人数降序排列，若人数相同，按课程号升序排列"><a href="#44、统计每门课程的学生选修人数（超过10人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，查询结果按人数降序排列，若人数相同，按课程号升序排列" class="headerlink" title="44、统计每门课程的学生选修人数（超过10人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，查询结果按人数降序排列，若人数相同，按课程号升序排列"></a>44、统计每门课程的学生选修人数（超过10人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，查询结果按人数降序排列，若人数相同，按课程号升序排列</h5><pre><code>SELECT C#,COUNT(1) 人数 
+FROM SC_6 
+GROUP BY C# 
+HAVING COUNT(1)&gt;10 
+ORDER BY COUNT(1) DESC,C# ASC;</code></pre><h5 id="45、检索至少选修两门课程的学生学号"><a href="#45、检索至少选修两门课程的学生学号" class="headerlink" title="45、检索至少选修两门课程的学生学号"></a>45、检索至少选修两门课程的学生学号</h5><pre><code>SELECT S#,COUNT(1) FROM SC_6 GROUP BY S# HAVING COUNT(1)&gt;2;</code></pre><h5 id="46、查询全部学生都选修的课程的课程号和课程名"><a href="#46、查询全部学生都选修的课程的课程号和课程名" class="headerlink" title="46、查询全部学生都选修的课程的课程号和课程名"></a>46、查询全部学生都选修的课程的课程号和课程名</h5><pre><code>SELECT COURSE_6.C#, CNAME 
+FROM COURSE_6,SC_6 
+WHERE COURSE_6.C# = SC_6.C#
+GROUP BY COURSE_6.C#,CNAME 
+HAVING COUNT(1) = (SELECT COUNT(1) FROM STUDENT_6);</code></pre><h5 id="47、查询没学过“叶平”老师讲授的任一门课程的学生姓名"><a href="#47、查询没学过“叶平”老师讲授的任一门课程的学生姓名" class="headerlink" title="47、查询没学过“叶平”老师讲授的任一门课程的学生姓名"></a>47、查询没学过“叶平”老师讲授的任一门课程的学生姓名</h5><pre><code>SELECT DISTINCT S#,SNAME 
+FROM STUDENT_6 
+WHERE S#  NOT in (
+SELECT S# FROM TEACHER_6,COURSE_6,SC_6 
+WHERE TNAME = &#39;叶平&#39; 
+AND TEACHER_6.T# = COURSE_6.T# 
+AND SC_6.C# = COURSE_6.C#);</code></pre><h5 id="48、查询两门以上不及格课程的同学的学号及其平均成绩"><a href="#48、查询两门以上不及格课程的同学的学号及其平均成绩" class="headerlink" title="48、查询两门以上不及格课程的同学的学号及其平均成绩"></a>48、查询两门以上不及格课程的同学的学号及其平均成绩</h5><pre><code>SELECT s#,ROUND(AVG(score),2) 
+FROM SC_6 
+WHERE S# IN (SELECT s# FROM SC_6 WHERE SCORE&lt;60 GROUP BY s# HAVING COUNT(1)&gt;1)
+GROUP BY S#;</code></pre><h5 id="49、检索“004”课程分数小于60，按分数降序排列的同学学号"><a href="#49、检索“004”课程分数小于60，按分数降序排列的同学学号" class="headerlink" title="49、检索“004”课程分数小于60，按分数降序排列的同学学号"></a>49、检索“004”课程分数小于60，按分数降序排列的同学学号</h5><pre><code>SELECT S#,SCORE
+FROM SC_6
+WHERE C# = &#39;004&#39; 
+AND SCORE &lt;60
+ORDER BY SCORE DESC;</code></pre><h5 id="50、删除“002”同学的“001”课程的成绩"><a href="#50、删除“002”同学的“001”课程的成绩" class="headerlink" title="50、删除“002”同学的“001”课程的成绩"></a>50、删除“002”同学的“001”课程的成绩</h5><pre><code>DELETE FROM SC_6 WHERE C# = &#39;002&#39; AND S# = &#39;1002&#39;;</code></pre>
+            <hr>
+          </div>
+          <br>
+          <div>
+            <p>
+            
+            
+            </p>
+            
+              <p class="note note-warning">本博客所有文章除特别声明外，均采用 <a href="https://zh.wikipedia.org/wiki/Wikipedia:CC_BY-SA_3.0%E5%8D%8F%E8%AE%AE%E6%96%87%E6%9C%AC" target="_blank" rel="nofollow noopener noopener">CC BY-SA 3.0协议</a> 。转载请注明出处！</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-lg-block col-lg-2 toc-container">
+      
+  <div id="toc">
+    <p class="h4"><i class="far fa-list-alt"></i>&nbsp;目录</p>
+    <div id="tocbot"></div>
+  </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- custom -->
+
+
+<!-- Comments -->
+<div class="col-lg-7 mx-auto nopadding-md">
+  <div class="container comments mx-auto" id="comments">
+    
+  </div>
+</div>
+
+    
+  </main>
+
+  
+    <a class="z-depth-1" id="scroll-top-button" href="#" role="button">
+      <i class="fa fa-chevron-up scroll-top-arrow" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  <footer class="mt-5">
+  <div class="text-center py-3">
+    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><b>Hexo</b></a>
+    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"> <b>Fluid</b></a>
+    <br>
+
+    
+  
+    <!-- 不蒜子统计PV -->
+    
+    &nbsp;<span id="busuanzi_container_site_pv">总访问量 
+          <span id="busuanzi_value_site_pv"></span> 次</span>&nbsp;
+  
+  
+    <!-- 不蒜子统计UV -->
+    
+    &nbsp;<span id="busuanzi_container_site_uv">总访客数 
+            <span id="busuanzi_value_site_uv"></span> 人</span>&nbsp;
+  
+  <br>
+
+
+
+    
+
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/lib/jquery/jquery.min.js" ></script>
+<script src="/lib/popper/popper.min.js" ></script>
+<script src="/lib/bootstrap/js/bootstrap.min.js" ></script>
+<script src="/lib/mdbootstrap/js/mdb.min.js" ></script>
+<script src="/js/main.js" ></script>
+
+
+  <script src="/js/lazyload.js" ></script>
+
+
+
+  
+    <script src="/lib/tocbot/tocbot.min.js" ></script>
+  
+  <script src="/js/post.js" ></script>
+
+
+
+  <script src="/lib/smooth-scroll/smooth-scroll.min.js" ></script>
+
+
+
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+<!-- Plugins -->
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  <script src="/lib/prettify/prettify.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      $('pre').addClass('prettyprint  linenums');
+      prettyPrint();
+    })
+  </script>
+
+
+
+  <script src="/lib/typed/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "mysql50道经典题&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script src="/lib/anchor/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "false",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      getSearchFile(path);
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script src="/lib/fancybox/jquery.fancybox.min.js" ></script>
+  <script>
+    $("#post img:not(.no-zoom img, img[no-zoom])").each(
+      function () {
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "images");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
